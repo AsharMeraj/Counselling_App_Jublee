@@ -110,7 +110,7 @@ const GHQForm = () => {
         </div>
       ))}
 
-      <Button onClick={handleGHQSubmit}>
+      <Button type="button" onClick={handleGHQSubmit}>
         Submit FORM
       </Button>
     </div>

@@ -103,7 +103,8 @@ const DemographicForm = () => {
         </div>
       ))}
 
-      <Button onClick={handleSubmit}>Continue</Button>
+      <Button type="button" onClick={handleSubmit}>Continue</Button>
+
     </div>
   );
 };

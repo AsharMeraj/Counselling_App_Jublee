@@ -13,8 +13,8 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: "Missing entryId" }, { status: 400 });
     }
 
-    // Fetch all results for this entryId, newest first
-    const allResults = await db
+    // Get only the most recent record
+    const lastResult = await db
       .select({
         id: results.id,
         questionnaireType: results.questionnaireType,
@@ -23,20 +23,17 @@ export async function GET(req: Request) {
       })
       .from(results)
       .where(eq(results.entryId, entryId))
-      .orderBy(desc(results.created_at));
+      .orderBy(desc(results.created_at))
+      .limit(1);
 
-    // Pick only the latest result per questionnaireType
-    const latestResultsMap = new Map<string, typeof allResults[0]>();
-    for (const r of allResults) {
-      if (!latestResultsMap.has(r.questionnaireType)) {
-        latestResultsMap.set(r.questionnaireType, r);
-      }
-    }
-    const latestResults = Array.from(latestResultsMap.values());
-
-    return NextResponse.json({ results: latestResults });
+    return NextResponse.json({
+      result: lastResult.length ? lastResult[0] : null,
+    });
   } catch (err) {
     console.error(err);
-    return NextResponse.json({ error: "Failed to fetch results" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to fetch results" },
+      { status: 500 }
+    );
   }
 }

@@ -10,19 +10,19 @@ export const scales = [
     description: "Short General Health Questionnaire",
     route: "/ghq",
   },
-  // {
-  //   title: "EPDS",
-  //   description: "Edinburgh Postnatal Depression Scale",
-  //   route: "/epds",
-  // },
+  {
+    title: "Work Stress",
+    description: "The Workplace Stress Scale",
+    route: "/workStress",
+  },
   // {
   //   title: "PHQ-9",
   //   description: "Patient Health Questionnaire Depression",
   //   route: "/phq9",
   // },
-  // {
-  //   title: "GAD-7",
-  //   description: "General Anxiety Disorder Screening",
-  //   route: "/gad7",
-  // },
+  {
+    title: "GAD-7",
+    description: "General Anxiety Disorder Screening",
+    route: "/gad7",
+  },
 ];

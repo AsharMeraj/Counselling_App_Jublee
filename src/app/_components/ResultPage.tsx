@@ -1,11 +1,25 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { questionnairesConfig } from "../_utils/questionnairesConfig";
 
+// Type for result fetched from API
 type Result = {
   id: number;
   questionnaireType: string;
   totalScore: number;
+};
+
+
+// Utility function to get classification and color dynamically
+const getClassificationAndColor = (questionnaireType: string, score: number) => {
+  const config = questionnairesConfig[questionnaireType];
+  if (!config) return { classification: "Unknown", color: "text-black" };
+
+  const range = config.scoreRanges.find(r => score >= r.min && score <= r.max);
+  if (!range) return { classification: "Unknown", color: "text-black" };
+
+  return { classification: range.classification, color: range.color };
 };
 
 const ResultPage = () => {
@@ -25,33 +39,23 @@ const ResultPage = () => {
       const entryId = Number(entryIdStr);
 
       fetch(`/api/get-results?entryId=${entryId}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setResults(data.results || []);
+        .then(res => res.json())
+        .then(data => {
+          if (data.result) {
+            setResults([data.result]); // wrap in array so mapping still works
+          } else {
+            setResults([]);
+          }
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err);
           setResults([]);
         })
         .finally(() => setLoading(false));
+
     }
   }, []);
 
-  const getScoreColor = (score: number) => {
-    if (score >= 0 && score <= 11) return "text-green-500"; // Normal
-    if (score >= 12 && score <= 19) return "text-yellow-800"; // Mild distress
-    if (score >= 20 && score <= 27) return "text-orange-500"; // Moderate distress
-    if (score >= 28) return "text-red-500"; // Severe distress
-    return "text-black";
-  };
-
-   const getClassification = (score: number) => {
-    if (score >= 0 && score <= 11) return "Normal / No distress";
-    if (score >= 12 && score <= 19) return "Mild distress";
-    if (score >= 20 && score <= 27) return "Moderate distress";
-    if (score >= 28) return "Severe distress";
-    return "Unknown";
-  };
 
   if (loading) {
     return (
@@ -74,12 +78,15 @@ const ResultPage = () => {
   return (
     <div className="min-h-[calc(100vh-13.5rem)] bg-(--primary)/5 flex flex-col justify-center items-center px-4 space-y-4 py-10">
       <h1 className="text-2xl font-bold text-center text-black">Your Questionnaire Results</h1>
-      {results.map((r) => (
-        <div key={r.id} className="text-lg text-center">
-          <span className="font-semibold text-black">{r.questionnaireType}:</span>{" "}
-          <span className={getScoreColor(r.totalScore)}>{r.totalScore} &rarr; {getClassification(r.totalScore)}</span>
-        </div>
-      ))}
+      {results.map(r => {
+        const { classification, color } = getClassificationAndColor(r.questionnaireType, r.totalScore);
+        return (
+          <div key={r.id} className="text-lg text-center">
+            <span className="font-semibold text-black">{r.questionnaireType}:</span>{" "}
+            <span className={color}>{r.totalScore} &rarr; {classification}</span>
+          </div>
+        );
+      })}
     </div>
   );
 };

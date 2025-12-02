@@ -1,10 +1,10 @@
 import React from "react";
-import GHQForm from "./_components/GHQPage";
+import WorkStressForm from "./_components/WorkStressForm";
 
 const MyComponent = () => {
   return (
     <>
-     <GHQForm/>
+     <WorkStressForm/>
     </>
   );
 };

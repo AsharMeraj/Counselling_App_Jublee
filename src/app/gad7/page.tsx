@@ -1,10 +1,11 @@
 import React from "react";
-import GHQForm from "./_components/GHQPage";
+import GAD7Form from "./_components/GAD7Form";
+
 
 const MyComponent = () => {
   return (
     <>
-     <GHQForm/>
+     <GAD7Form/>
     </>
   );
 };

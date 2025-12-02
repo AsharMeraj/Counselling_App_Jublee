@@ -4,7 +4,7 @@ import React from 'react'
 import logo from '../../../public/logo.png'
 import back from '../../../public/BackBlue.png'
 import { useRouter } from 'next/navigation'
-import { useEPDSResult } from '../_context/EPDSResult'
+import { useEPDSResult } from '../../_context/EPDSResult'
 import Button from './Button'
 
 const Navbar = () => {

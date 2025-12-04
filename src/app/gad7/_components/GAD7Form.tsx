@@ -3,71 +3,70 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { gad7Questions } from "@/app/_utils/scales/gad7Questions";
+import { urduGad7Questions } from "@/app/_utils/scales/gad7Questions";
 import Button from "../../_components/Button";
 
 const GAD7Form = () => {
   const [answers, setAnswers] = useState<{ [key: number]: number }>({});
+  const [isUrdu, setIsUrdu] = useState(false); // <-- toggle state
   const router = useRouter();
+
+  const currentQuestions = isUrdu ? urduGad7Questions.questions : gad7Questions.questions;
 
   const handleSelect = (index: number, value: number) => {
     setAnswers((prev) => ({ ...prev, [index]: value }));
   };
 
   const handleSubmit = async () => {
-    if (Object.keys(answers).length < gad7Questions.questions.length) {
-      alert("Please answer all GAD-7 questions before submitting.");
+    if (Object.keys(answers).length < currentQuestions.length) {
+      alert(isUrdu ? "براہ کرم تمام سوالات کے جوابات دیں۔" : "Please answer all questions before submitting.");
       return;
     }
 
     const totalScore = Object.values(answers).reduce((sum, v) => sum + v, 0);
 
-    // Get stored demographic entryId from localStorage
     const demographicStr = localStorage.getItem("demographicData");
     if (!demographicStr) {
-      alert("Demographic missing. Please submit it first.");
+      alert(isUrdu ? "ڈیموگرافک ڈیٹا غائب ہے۔ پہلے جمع کریں۔" : "Demographic missing. Please submit it first.");
       return;
     }
     const { entryId } = JSON.parse(demographicStr);
 
     try {
-      // Save GAD-7 result
       await fetch("/api/save-result", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           entryId,
-          questionnaireType: gad7Questions.type, // dynamic type
+          questionnaireType: isUrdu ? urduGad7Questions.type : gad7Questions.type,
           totalScore,
         }),
       });
 
-      // Store entryId for ResultPage
       localStorage.setItem("entryId", entryId.toString());
-
       router.push("/result");
     } catch (err) {
       console.error(err);
-      alert("Server error — try again.");
+      alert(isUrdu ? "سرور کی خرابی — دوبارہ کوشش کریں۔" : "Server error — try again.");
     }
   };
 
-  const progress = Math.round(
-    (Object.keys(answers).length / gad7Questions.questions.length) * 100
-  );
+  const progress = Math.round((Object.keys(answers).length / currentQuestions.length) * 100);
 
   return (
-    <div className="min-h-[calc(100vh-13.5rem)] bg-(--primary)/5 pb-10 px-6 md:px-12 pt-10 md:pt-10">
+    <div className="bg-(--primary)/5 pb-10 px-6 md:px-12 pt-10 md:pt-10">
+
       {/* Sticky Progress Bar */}
       <div className="sticky top-0 z-50 bg-[#F2F9FA] md:px-12 p-4">
         <div className="flex justify-between items-center mb-2">
           <span className="text-(--primary) font-semibold">
-            Questions left:{" "}
+            {isUrdu ? "باقی سوالات:" : "Questions left:"}{" "}
             <span className="text-(--secondary)">
-              {gad7Questions.questions.length - Object.keys(answers).length}
+              {currentQuestions.length - Object.keys(answers).length}
             </span>
           </span>
           <span className="text-(--primary) font-semibold">
-            <span className="text-(--secondary)">{progress}%</span> completed
+            <span className="text-(--secondary)">{progress}%</span> {isUrdu ? "مکمل" : "completed"}
           </span>
         </div>
         <div className="w-full bg-gray-300 rounded-full h-3">
@@ -78,13 +77,22 @@ const GAD7Form = () => {
         </div>
       </div>
 
-      <div className="text-center my-10">
+      {/* Title & Language Toggle */}
+      <div className="text-center my-10 flex flex-col md:flex-row justify-center items-center gap-4">
         <h1 className="text-[20px] md:text-[25px] font-bold text-(--secondary)">
-          Generalized Anxiety Disorder Questionnaire
+          {isUrdu ? "عام اضطراب کی تشخیص کا سوالنامہ" : "Generalized Anxiety Disorder Questionnaire"}
         </h1>
+        <button
+          type="button"
+          onClick={() => setIsUrdu((prev) => !prev)}
+          className="px-4 py-2 rounded bg-(--secondary) text-white hover:opacity-90 transition"
+        >
+          {isUrdu ? "English" : "اردو"}
+        </button>
       </div>
 
-      {gad7Questions.questions.map((q, i) => (
+      {/* Questions */}
+      {currentQuestions.map((q, i) => (
         <div key={i} className="mb-10">
           <p className="md:text-[18px] font-bold mb-5 opacity-80 dark:text-black">
             {i + 1}. {q.question}
@@ -112,7 +120,7 @@ const GAD7Form = () => {
       ))}
 
       <Button type="button" onClick={handleSubmit}>
-        Submit FORM
+        SUBMIT FORM
       </Button>
     </div>
   );

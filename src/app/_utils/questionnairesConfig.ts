@@ -5,7 +5,7 @@ export const questionnairesConfig: Record<
     scoreRanges: { min: number; max: number; classification: string; color: string }[];
   }
 > = {
-  "GAD": {
+  "GAD-7": {
     maxScore: 21,
     scoreRanges: [
       { min: 0, max: 4, classification: "Minimal anxiety", color: "text-green-500" },

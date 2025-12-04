@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./_components/Navbar";
 import { EPDSProvider } from "../_context/EPDSResult";
+import Footer from "./_components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,11 +35,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div>
-          <main className="w-full max-w-[1000px] m-auto shadow-2xl shadow-black/30 bg-white ">
+          <main className="w-full max-w-[1000px] m-auto  bg-white ">
             <EPDSProvider>
               <Navbar />
               {children}
             </EPDSProvider>
+            {/* <Footer/> */}
           </main>
         </div>
       </body>

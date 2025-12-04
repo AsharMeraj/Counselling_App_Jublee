@@ -66,3 +66,73 @@ export const gad7Questions = {
     }
   ]
 };
+
+export const urduGad7Questions = {
+  type: "GAD-7",
+  questions: [
+    {
+      question: "پریشان، اضطرابی، یا تناؤ محسوس کرنا",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "کچھ دن", value: 1 },
+        { Label: "آدھے دن سے زیادہ", value: 2 },
+        { Label: "تقریباً ہر دن", value: 3 }
+      ]
+    },
+    {
+      question: "پریشانی کو روکنے یا کنٹرول نہ کر پانا",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "کچھ دن", value: 1 },
+        { Label: "آدھے دن سے زیادہ", value: 2 },
+        { Label: "تقریباً ہر دن", value: 3 }
+      ]
+    },
+    {
+      question: "مختلف چیزوں کے بارے میں زیادہ پریشان ہونا",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "کچھ دن", value: 1 },
+        { Label: "آدھے دن سے زیادہ", value: 2 },
+        { Label: "تقریباً ہر دن", value: 3 }
+      ]
+    },
+    {
+      question: "آرام کرنے میں مشکل ہونا",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "کچھ دن", value: 1 },
+        { Label: "آدھے دن سے زیادہ", value: 2 },
+        { Label: "تقریباً ہر دن", value: 3 }
+      ]
+    },
+    {
+      question: "اتنا بے قرار ہونا کہ بیٹھنا مشکل ہو جائے",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "کچھ دن", value: 1 },
+        { Label: "آدھے دن سے زیادہ", value: 2 },
+        { Label: "تقریباً ہر دن", value: 3 }
+      ]
+    },
+    {
+      question: "آسانی سے غصہ آنا یا چڑچڑا ہونا",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "کچھ دن", value: 1 },
+        { Label: "آدھے دن سے زیادہ", value: 2 },
+        { Label: "تقریباً ہر دن", value: 3 }
+      ]
+    },
+    {
+      question: "خوف محسوس کرنا، جیسے کچھ برا ہونے والا ہو",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "کچھ دن", value: 1 },
+        { Label: "آدھے دن سے زیادہ", value: 2 },
+        { Label: "تقریباً ہر دن", value: 3 }
+      ]
+    }
+  ]
+};
+

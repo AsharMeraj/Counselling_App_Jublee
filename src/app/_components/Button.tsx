@@ -15,7 +15,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         ref={ref}
         className={cn(
-          "mt-6 w-full bg-(--secondary) text-white py-3 rounded-md font-semibold text-lg uppercase",
+          "mt-6 w-full bg-(--secondary) text-white py-3 rounded-md font-semibold sm:text-lg uppercase",
           className
         )}
         {...props}

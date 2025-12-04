@@ -26,8 +26,11 @@ const DemographicForm = () => {
     // -----------------------------
     const payload = {
       name: form["Name"],
+      father_husband: form["Father / Husband Name"],
       age: Number(form["Age"]),
       gender: form["Gender"],
+      profession: form["Profession"],
+      qualification: form["Qualification"],
       phoneNumber: form["Phone Number"],
     };
 
@@ -63,8 +66,8 @@ const DemographicForm = () => {
 
 
   return (
-    <div className="min-h-[calc(100vh-13.5rem)] bg-(--primary)/5 pb-10 px-6 md:px-12 pt-10">
-      <h1 className="text-center text-[22px] md:text-[26px] font-bold text-(--secondary) mb-10">
+    <div className="h-fit bg-(--primary)/5 pb-10 px-6 md:px-12 pt-10">
+      <h1 className="text-center text-[22px] md:text-[26px] font-bold text-(--secondary) mb-2">
         Demographic Information
       </h1>
 
@@ -75,19 +78,19 @@ const DemographicForm = () => {
           </p>
 
           {q.options ? (
-            <div className="space-y-3 ml-1">
+            <div className="flex gap-6">
               {q.options.map((opt, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleChange(q.question, opt)}
                   className="flex items-center cursor-pointer"
                 >
-                  <div className="h-[22px] w-[22px] rounded-full border-2 border-gray-500 flex items-center justify-center mr-3">
+                  <div className="h-[22px] w-[22px] rounded-full border-2 border-gray-400 flex items-center justify-center mr-3">
                     {form[q.question] === opt && (
                       <div className="h-3 w-3 rounded-full bg-(--secondary)" />
                     )}
                   </div>
-                  <span className="text-[16px] text-black">{opt}</span>
+                  <span className="text-[16px] text-black/60">{opt}</span>
                 </button>
               ))}
             </div>

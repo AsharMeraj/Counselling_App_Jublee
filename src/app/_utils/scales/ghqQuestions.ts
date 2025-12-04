@@ -112,3 +112,118 @@ export const ghqQuestions = {
     }
   ]
 };
+
+// urduGhqQuestions.ts
+export const urduGhqQuestions = {
+  type: "GHQ",
+  questions: [
+    {
+      question: "کیا آپ نے ذہنی دباؤ یا پریشانی زیادہ محسوس کی؟",
+      options: [
+        { Label: "کبھی نہیں", value: 0 },
+        { Label: "کبھی کبھار", value: 1 },
+        { Label: "اکثر", value: 2 },
+        { Label: "تقریباً ہمیشہ", value: 3 }
+      ]
+    },
+    {
+      question: "کیا آپ کو روزمرہ کے کاموں میں دلچسپی کم محسوس ہوئی؟",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "تھوڑا بہت", value: 1 },
+        { Label: "خاصی حد تک", value: 2 },
+        { Label: "بہت زیادہ", value: 3 }
+      ]
+    },
+    {
+      question: "کیا آپ کو توجہ مرکوز کرنے میں مشکل ہوئی؟",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "ہلکی سی", value: 1 },
+        { Label: "خاصی زیادہ", value: 2 },
+        { Label: "بہت شدید", value: 3 }
+      ]
+    },
+    {
+      question: "کیا آپ کو فیصلے کرنے میں دقت محسوس ہوئی؟",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "ہلکی سی مشکل", value: 1 },
+        { Label: "کافی مشکل", value: 2 },
+        { Label: "بہت زیادہ مشکل", value: 3 }
+      ]
+    },
+    {
+      question: "کیا آپ نے خود کو مسلسل دباؤ میں محسوس کیا؟",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "تھوڑا بہت", value: 1 },
+        { Label: "زیادہ", value: 2 },
+        { Label: "بہت زیادہ", value: 3 }
+      ]
+    },
+    {
+      question: "کیا آپ کو لگا کہ آپ اپنی مشکلات پر قابو نہیں پا رہے؟",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "تھوڑا بہت", value: 1 },
+        { Label: "خاصی حد تک", value: 2 },
+        { Label: "بہت زیادہ", value: 3 }
+      ]
+    },
+    {
+      question: "کیا آپ نے اپنی معمول کی سرگرمیوں سے کم لطف اٹھایا؟",
+      options: [
+        { Label: "نہیں، معمول کے مطابق", value: 0 },
+        { Label: "تھوڑا کم", value: 1 },
+        { Label: "کافی کم", value: 2 },
+        { Label: "بہت کم", value: 3 }
+      ]
+    },
+    {
+      question: "کیا آپ روزمرہ مسائل کا سامنا کرنے میں کمزور محسوس کرتے تھے؟",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "تھوڑا سا", value: 1 },
+        { Label: "زیادہ", value: 2 },
+        { Label: "بہت زیادہ", value: 3 }
+      ]
+    },
+    {
+      question: "کیا آپ نے اداسی یا ڈپریشن محسوس کیا؟",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "معمول کے مطابق", value: 1 },
+        { Label: "زیادہ", value: 2 },
+        { Label: "بہت زیادہ", value: 3 }
+      ]
+    },
+    {
+      question: "کیا آپ کا اعتماد کم ہوا؟",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "معمول کے مطابق", value: 1 },
+        { Label: "زیادہ", value: 2 },
+        { Label: "بہت زیادہ", value: 3 }
+      ]
+    },
+    {
+      question: "کیا آپ نے خود کو بیکار یا کم اہم محسوس کیا؟",
+      options: [
+        { Label: "بالکل نہیں", value: 0 },
+        { Label: "معمول کے مطابق", value: 1 },
+        { Label: "زیادہ", value: 2 },
+        { Label: "بہت زیادہ", value: 3 }
+      ]
+    },
+    {
+      question: "کیا مجموعی طور پر آپ نے خود کو کم خوش محسوس کیا؟",
+      options: [
+        { Label: "زیادہ خوش", value: 0 },
+        { Label: "تقریباً معمول جیسے", value: 1 },
+        { Label: "کم خوش", value: 2 },
+        { Label: "بہت کم خوش", value: 3 }
+      ]
+    }
+  ]
+};

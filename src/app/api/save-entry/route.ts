@@ -6,12 +6,12 @@ import { all_entries } from "@/app/_utils/db/schema";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, age, gender, phoneNumber } = body;
+    const { name, father_husband, age, gender, profession, qualification, phoneNumber } = body;
 
     // Insert demographic
     const entry = await db
       .insert(all_entries)
-      .values({ name, age: Number(age), gender, phoneNumber })
+      .values({ name, father_husband, age: Number(age), gender, profession, qualification, phoneNumber })
       .returning();
 
     // Return the entryId for linking questionnaire results

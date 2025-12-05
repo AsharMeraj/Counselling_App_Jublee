@@ -14,7 +14,7 @@ export const questionnairesConfig: Record<
       { min: 15, max: 21, classification: "Severe anxiety", color: "text-red-500" }
     ]
   },
-  "GHQ": {
+  "GHQ-12": {
     maxScore: 36,
     scoreRanges: [
       { min: 0, max: 11, classification: "Normal / No distress", color: "text-green-500" },

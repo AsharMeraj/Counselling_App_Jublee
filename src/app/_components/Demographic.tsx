@@ -41,6 +41,9 @@ const DemographicForm = () => {
         body: JSON.stringify(payload),
       });
 
+      localStorage.removeItem("demographicData");
+      localStorage.removeItem("entryId");
+
       const data = await res.json();
 
       if (!res.ok) {

@@ -11,7 +11,7 @@ export const scales = [
     route: "/ghq",
   },
   {
-    title: "Work Stress",
+    title: "Work-Stress",
     description: "The Workplace Stress Scale",
     route: "/workStress",
   },

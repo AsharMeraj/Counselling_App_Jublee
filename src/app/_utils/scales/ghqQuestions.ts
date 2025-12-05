@@ -1,6 +1,6 @@
 // ghqQuestions.ts
 export const ghqQuestions = {
-  type: "GHQ",
+  type: "GHQ-12",
   questions: [
     {
       question: "Been able to concentrate on what you're doing?",
@@ -115,7 +115,7 @@ export const ghqQuestions = {
 
 // urduGhqQuestions.ts
 export const urduGhqQuestions = {
-  type: "GHQ",
+  type: "GHQ-12",
   questions: [
     {
       question: "کیا آپ نے ذہنی دباؤ یا پریشانی زیادہ محسوس کی؟",

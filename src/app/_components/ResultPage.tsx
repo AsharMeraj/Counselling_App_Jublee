@@ -22,6 +22,19 @@ const getClassificationAndColor = (questionnaireType: string, score: number) => 
   return { classification: range.classification, color: range.color };
 };
 
+const getScoreMeta = (questionnaireType: string, score: number) => {
+  const config = questionnairesConfig[questionnaireType];
+  if (!config) return null;
+
+  const percentage = Math.min(100, (score / config.maxScore) * 100);
+
+  return {
+    maxScore: config.maxScore,
+    percentage
+  };
+};
+
+
 const ResultPage = () => {
   const [results, setResults] = useState<Result[] | null>(null);
   const [loading, setLoading] = useState(true);

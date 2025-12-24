@@ -14,10 +14,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         ref={ref}
-        className={cn(
-          "mt-6 w-full bg-(--secondary) text-white py-3 rounded-md font-semibold sm:text-lg uppercase",
-          className
-        )}
+        className="relative group overflow-hidden px-8 py-3 uppercase w-full  rounded-full font-bold text-white text-lg tracking-tight shadow-lg shadow-blue-500/10 transition-all hover:-translate-y-0.5 active:scale-95"
+          style={{ background: `linear-gradient(135deg, var(--primary), var(--secondary))` }}
         {...props}
       />
     );

@@ -66,22 +66,22 @@ const WorkStressForm = () => {
       {/* Progress Bar */}
       <div className="sticky top-0 z-50 bg-[#F2F9FA] md:px-12 p-4">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-(--primary) font-semibold">
+          <span className="text-primary font-semibold">
             {isUrdu ? "باقی سوالات:" : "Questions left:"}{" "}
-            <span className="text-(--secondary)">
+            <span className="text-secondary">
               {currentQuestions.length - Object.keys(answers).length}
             </span>
           </span>
 
-          <span className="text-(--primary) font-semibold">
-            <span className="text-(--secondary)">{progress}%</span>{" "}
+          <span className="text-primary font-semibold">
+            <span className="text-secondary">{progress}%</span>{" "}
             {isUrdu ? "مکمل" : "completed"}
           </span>
         </div>
 
         <div className="w-full bg-gray-300 rounded-full h-3">
           <div
-            className="bg-(--secondary) h-3 rounded-full transition-all duration-300"
+            className="bg-secondary h-3 rounded-full transition-all duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -89,14 +89,14 @@ const WorkStressForm = () => {
 
       {/* Title + Language toggle */}
       <div className="text-center my-10 flex flex-col md:flex-row justify-center items-center gap-4">
-        <h1 className="text-[20px] md:text-[25px] font-bold text-(--secondary)">
-          {isUrdu ?" کام کی جگہ کے دباؤ کا سوالنامہ" : "Work Space Health Scale"}
+        <h1 className="text-[20px] md:text-[25px] font-bold text-secondary">
+          {isUrdu ?" کام کی جگہ کے دباؤ کا سوالنامہ" : "WorkSpace Stress Scale"}
         </h1>
 
         <button
           type="button"
           onClick={() => setIsUrdu((prev) => !prev)}
-          className="px-4 py-2 rounded bg-(--secondary) text-white hover:opacity-90 transition"
+          className="px-4 py-2 rounded bg-secondary text-white hover:opacity-90 transition"
         >
           {isUrdu ? "English" : "اردو"}
         </button>
@@ -116,9 +116,9 @@ const WorkStressForm = () => {
                 onClick={() => handleSelect(i, opt.value)}
                 className="flex items-center mb-4 mr-6 cursor-pointer"
               >
-                <div className="h-[25px] w-[25px] rounded-full border-2 border-(--primary) flex items-center justify-center mr-3">
+                <div className="h-[25px] w-[25px] rounded-full border-2 border-primary flex items-center justify-center mr-3">
                   {answers[i] === opt.value && (
-                    <div className="h-3.5 w-3.5 rounded-full bg-(--secondary)" />
+                    <div className="h-3.5 w-3.5 rounded-full bg-secondary" />
                   )}
                 </div>
                 <span className="md:text-[17px] opacity-80 dark:text-black">

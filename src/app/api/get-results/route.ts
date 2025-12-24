@@ -1,6 +1,8 @@
-// src/app/api/get-results/route.ts
+
 import { NextResponse } from "next/server";
+// @ts-ignore - Assuming user has these configured as per their snippet
 import { db } from "@/app/_utils/db/index";
+// @ts-ignore - Assuming user has these configured as per their snippet
 import { results } from "@/app/_utils/db/schema";
 import { eq, desc } from "drizzle-orm";
 
@@ -13,8 +15,8 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: "Missing entryId" }, { status: 400 });
     }
 
-    // Get only the most recent record
-    const lastResult = await db
+    // Fetch ALL records for this entryId, ordered by most recent first
+    const allResults = await db
       .select({
         id: results.id,
         questionnaireType: results.questionnaireType,
@@ -23,14 +25,13 @@ export async function GET(req: Request) {
       })
       .from(results)
       .where(eq(results.entryId, entryId))
-      .orderBy(desc(results.created_at))
-      .limit(1);
+      .orderBy(desc(results.created_at));
 
     return NextResponse.json({
-      result: lastResult.length ? lastResult[0] : null,
+      results: allResults,
     });
   } catch (err) {
-    console.error(err);
+    console.error("Database Error:", err);
     return NextResponse.json(
       { error: "Failed to fetch results" },
       { status: 500 }

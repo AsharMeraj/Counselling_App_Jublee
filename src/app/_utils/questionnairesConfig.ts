@@ -14,6 +14,7 @@ export const questionnairesConfig: Record<
       { min: 15, max: 21, classification: "Severe anxiety", color: "text-red-500" }
     ]
   },
+
   "GHQ-12": {
     maxScore: 36,
     scoreRanges: [
@@ -23,6 +24,7 @@ export const questionnairesConfig: Record<
       { min: 28, max: 36, classification: "Severe distress", color: "text-red-500" }
     ]
   },
+
   "Work-Stress": {
     maxScore: 40,
     scoreRanges: [
@@ -30,6 +32,15 @@ export const questionnairesConfig: Record<
       { min: 16, max: 20, classification: "Fairly low", color: "text-yellow-800" },
       { min: 21, max: 25, classification: "Moderate stress", color: "text-orange-500" },
       { min: 26, max: 40, classification: "Severe", color: "text-red-500" }
+    ]
+  },
+
+  "EPDS": {
+    maxScore: 30,
+    scoreRanges: [
+      { min: 0, max: 9, classification: "Mild depression", color: "text-green-500" },
+      { min: 10, max: 12, classification: "Moderate depression", color: "text-yellow-800" },
+      { min: 13, max: 30, classification: "Severe depression", color: "text-red-500" }
     ]
   }
 };

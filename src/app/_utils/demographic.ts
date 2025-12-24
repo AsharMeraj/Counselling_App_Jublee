@@ -1,30 +1,90 @@
-export const demographic = [
-    {
-        question: "Name",
-        placeHolder: "Enter your name"
-    },
-    {
-        question: "Father / Husband Name",
-        placeHolder: "Enter your guardian name"
-    },
-    {
-        question: "Age",
-        placeHolder: "Enter your age"
-    },
-    {
-        question: "Gender",
-        options: ["Male", "Female", "Other"]
-    },
-    {
-        question: "Profession",
-        placeHolder: "Enter your profession"
-    },
-    {
-        question: "Qualification",
-        placeHolder: "Enter your qualification"
-    },
-    {
-        question: "Phone Number",
-        placeHolder: "Please enter your phone number"
-    },
-]
+export type DemographicField = {
+  key: string;
+  question: string;
+  type: "text" | "radio" | "select";
+  placeHolder?: string;
+  options?: string[];
+  inputType?: string; // "text", "number", "tel", etc.
+};
+
+export const demographic: DemographicField[] = [
+  {
+    key: "name",
+    question: "Name",
+    type: "text",
+    placeHolder: "Enter your name",
+    inputType: "text",
+  },
+  {
+    key: "father_husband",
+    question: "Father / Husband Name",
+    type: "text",
+    placeHolder: "Enter name",
+    inputType: "text",
+  },
+  {
+    key: "age",
+    question: "Age",
+    type: "text",
+    placeHolder: "Enter age",
+    inputType: "number",
+  },
+  {
+    key: "gender",
+    question: "Gender",
+    type: "radio",
+    options: ["Male", "Female", "Other"],
+    inputType: "text", // optional for radios
+  },
+  {
+    key: "qualification",
+    question: "Qualification",
+    type: "select",
+    options: [
+      "Primary",
+      "Middle",
+      "Matric (10th)",
+      "Intermediate / FA / FSC (12th)",
+      "Diploma / DAE",
+      "Bachelor’s Degree",
+      "Master’s Degree",
+      "MPhil",
+      "PhD",
+      "Professional Certification",
+      "No Formal Education",
+      "Other",
+    ],
+    inputType: "text",
+  },
+  {
+    key: "profession",
+    question: "Occupation (Select One):",
+    type: "select",
+    options: [
+      "Student",
+      "Self-Employed",
+      "Business Owner",
+      "Job Holder / Employee",
+      "Freelancer",
+      "Housewife / Homemaker",
+      "Unemployed",
+      "Retired",
+      "Government Employee",
+      "Private Sector Employee",
+      "Daily Wage Worker",
+      "Teacher / Education Sector",
+      "Healthcare Professional",
+      "Driver / Rider",
+      "Shopkeeper",
+      "Other (Please specify)",
+    ],
+    inputType: "text",
+  },
+  {
+    key: "phoneNumber",
+    question: "Phone Number",
+    type: "text",
+    placeHolder: "03XXXXXXXXX",
+    inputType: "tel",
+  },
+];

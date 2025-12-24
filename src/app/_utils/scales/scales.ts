@@ -15,11 +15,11 @@ export const scales = [
     description: "The Workplace Stress Scale",
     route: "/workStress",
   },
-  // {
-  //   title: "PHQ-9",
-  //   description: "Patient Health Questionnaire Depression",
-  //   route: "/phq9",
-  // },
+  {
+    title: "EPDS",
+    description: "EPDS Questionnaire",
+    route: "/epds",
+  },
   {
     title: "GAD-7",
     description: "General Anxiety Disorder Screening",

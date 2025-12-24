@@ -31,7 +31,7 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-[calc(100vh-13.5rem)] bg-(--primary)/5 px-6 md:px-12 py-16">
-      <h1 className="text-center text-[26px] md:text-[32px] font-bold text-(--primary)">
+      <h1 className="text-center text-[26px] md:text-[32px] font-bold text-primary">
         Mental Health Screening Tools
       </h1>
 
@@ -64,13 +64,13 @@ export default function LandingPage() {
                 </span>
               )}
 
-              <h2 className="text-xl font-bold text-(--primary)">{s.title}</h2>
+              <h2 className="text-xl font-bold text-primary">{s.title}</h2>
               <p className="text-gray-700 mt-2">{s.description}</p>
 
               <button
                 className={`
                   mt-6 inline-block px-4 py-2 rounded-md text-sm font-semibold transition
-                  bg-(--secondary) text-white hover:bg-(--primary)"}
+                  bg-secondary text-white hover:bg-(--primary)"}
                 `}
               // optional: disable button if already submitted
               >

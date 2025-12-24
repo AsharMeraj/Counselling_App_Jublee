@@ -91,7 +91,7 @@ const DemographicForm = () => {
                   e.preventDefault();
                 }
               }}
-              className="w-full text-black placeholder:text-black/40 text-[17px] placeholder:text-[17px] border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary focus:ring-offset-1"
+              className="w-full text-black placeholder:text-black/50 text-[17px] placeholder:text-[17px] border border-gray-300 rounded-md px-4 py-3 outline-none focus:border-secondary focus:ring-2 focus:ring-secondary focus:ring-offset-1"
             />
           )}
 
@@ -109,7 +109,7 @@ const DemographicForm = () => {
                     id={`${q.key}-${idx}`}
                     className="focus-visible:ring-secondary focus-visible:ring-2"
                   />
-                  <label htmlFor={`${q.key}-${idx}`} className="text-[16px] text-black/80">
+                  <label htmlFor={`${q.key}-${idx}`} className="text-[16px] text-black/50">
                     {opt}
                   </label>
                 </div>

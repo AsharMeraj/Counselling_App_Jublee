@@ -61,7 +61,7 @@ const WorkStressForm = () => {
   );
 
   return (
-    <div className="bg-(--primary)/5 pb-10 px-6 md:px-12 pt-10 md:pt-10">
+    <div className="bg-primary/5 pb-10 px-6 md:px-12 pt-10 md:pt-10">
 
       {/* Progress Bar */}
       <div className="sticky top-0 z-50 bg-[#F2F9FA] md:px-12 p-4">

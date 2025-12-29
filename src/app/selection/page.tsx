@@ -1,8 +1,12 @@
+
 "use client";
+
 
 import { useEffect, useState } from "react";
 import { ScaleItem, scales } from "@/app/_utils/scales/scales";
 import { useRouter } from "next/navigation";
+import Button from "../_components/Button";
+
 
 export default function LandingPage() {
   const router = useRouter();
@@ -28,58 +32,85 @@ export default function LandingPage() {
     check();
   }, []);
 
-
   return (
-    <div className="min-h-[calc(100vh-13.5rem)] bg-(--primary)/5 px-6 md:px-12 py-16">
-      <h1 className="text-center text-[26px] md:text-[32px] font-bold text-primary">
-        Mental Health Screening Tools
-      </h1>
+    <div className="min-h-screen bg-primary/5 pb-24">
+      {/* Hero Section: Maintaining the 'perfect' wave embroidery with requested gradient */}
+      <div
+        className="w-full h-60 sm:h-96 relative overflow-hidden"
+        style={{ background: `linear-gradient(135deg, var(--primary, #0094cf) 0%, var(--secondary, #9c2790) 100%)` }}
+      >
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+            {/* The background 'embroidery' wave pattern */}
+            <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white" />
+          </svg>
+        </div>
+        
+        <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
+          <div className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-[0.3em] mb-6 border border-white/30">
+            Professional Screening Tools
+          </div>
+          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tighter mb-4 drop-shadow-md">
+            Mental Health Screening
+          </h1>
+          <p className="text-white/80 max-w-xl leading-5 md:text-lg font-medium md:leading-relaxed">
+            Select a scale below to begin the assessment. These tools are clinically validated for accurate screening.
+          </p>
+        </div>
+      </div>
 
-      <p className="text-center text-gray-700 mt-2 mb-10 text-[16px]">
-        Select a scale below to begin the assessment.
-      </p>
+      {/* Main Content Grid: Card design with theme-specific colors */}
+      <div className="max-w-6xl mx-auto px-6 -mt-5 md:-mt-16 relative z-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {scales.map((s: ScaleItem) => {
+            const isSubmitted = submittedTypes[s.title];
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-        {scales.map((s: ScaleItem) => {
-          const isSubmitted = submittedTypes[s.title]; // check by type
-
-          return (
-            <div
-              key={s.route}
-              onClick={() => router.push(s.route)}
-              className="
-                cursor-pointer bg-white rounded-xl p-6 shadow-sm 
-                hover:shadow-md hover:-translate-y-1 transition-all duration-300
-                border border-gray-200 relative
-              "
-            >
-              {isSubmitted && (
-                <span
-                  className="
-                    absolute top-3 right-3 bg-green-600 text-white text-xs 
-                    px-3 py-1 rounded-full font-semibold
-                  "
-                >
-                  Submitted
-                </span>
-              )}
-
-              <h2 className="text-xl font-bold text-primary">{s.title}</h2>
-              <p className="text-gray-700 mt-2">{s.description}</p>
-
-              <button
-                className={`
-                  mt-6 inline-block px-4 py-2 rounded-md text-sm font-semibold transition
-                  bg-secondary text-white hover:bg-(--primary)"}
-                `}
-              // optional: disable button if already submitted
+            return (
+              <div
+                key={s.route}
+                onClick={() => router.push(s.route)}
+                className="group relative bg-white rounded-[2.5rem] p-8 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] border border-slate-100 cursor-pointer transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] hover:-translate-y-2"
               >
-                {isSubmitted ? "Submit Again" : "Start Assessment →"}
-              </button>
-            </div>
-          );
-        })}
+                {/* Submitted Badge */}
+                {isSubmitted && (
+                  <div className="absolute top-6 right-6 flex items-center gap-2 px-6 py-2 bg-green-50 text-green-600 rounded-full border border-green-100">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                    <span className="text-[15px] font-black uppercase tracking-wider">Submitted</span>
+                  </div>
+                )}
+
+                {/* Card Top Section */}
+                <div className="mb-6">
+                  <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center mb-6 transition-colors group-hover:bg-primary/10">
+                    <svg className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  
+                  <h2 className="text-2xl font-bold text-primary tracking-tight mb-3">
+                    {s.title}
+                  </h2>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    {s.description}
+                  </p>
+                </div>
+
+                {/* Card Action: Using 'secondary' color as specified in the theme */}
+                <div className="mt-auto">
+                  <Button variant="pink">
+                    {isSubmitted ? "Submit Again" : "Start Assessment →"}
+                  </Button>
+                </div>
+
+                {/* Subtle Hover Accent */}
+                <div className="absolute bottom-0 left-8 right-8 h-1 bg-primary/20 rounded-t-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"></div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
 }
+
+

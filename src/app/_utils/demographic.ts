@@ -38,7 +38,7 @@ export const demographic: DemographicField[] = [
   },
   {
     key: "qualification",
-    question: "Qualification",
+    question: "Qualification (Select One)",
     type: "select",
     options: [
       "Primary",

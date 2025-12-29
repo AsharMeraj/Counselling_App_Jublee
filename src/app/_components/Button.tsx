@@ -1,27 +1,36 @@
-import * as React from "react";
+import React from "react";
+import { cn } from "../_utils/cn/cn";
 import { Slot } from "@radix-ui/react-slot";
-import { cn } from "../_utils/cn/cn"; // OR add your own class merge util
+
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
+  variant?: "pink" | "default";
   className?: string;
 }
-
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, asChild = false, ...props }, ref) => {
+  ({ className, asChild = false, variant = "default", ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
+
+    const backgroundStyle =
+      variant === "pink"
+        ? { backgroundColor: "var(--secondary)" }
+        : {
+            background: "linear-gradient(135deg, var(--primary), var(--secondary))",
+          };
 
     return (
       <Comp
         ref={ref}
-        className="relative group overflow-hidden px-8 py-3 uppercase w-full  rounded-full font-bold text-white text-lg tracking-tight shadow-lg shadow-blue-500/10 transition-all hover:-translate-y-0.5 active:scale-95"
-          style={{ background: `linear-gradient(135deg, var(--primary), var(--secondary))` }}
+        className={cn(
+          "relative group overflow-hidden px-6 py-3 md:px-8 md:py-4 uppercase w-full rounded-full font-extrabold text-white text-sm md:text-base whitespace-nowrap tracking-tight shadow-lg shadow-blue-500/10 transition-all hover:-translate-y-0.5 active:scale-95",
+          className
+        )}
+        style={backgroundStyle}
         {...props}
       />
     );
   }
 );
 
-Button.displayName = "Button";
-
-export default Button;
+export default Button

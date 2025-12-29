@@ -15,17 +15,20 @@ const Navbar = () => {
 
   return (
     <section className="top-0 z-50">
-      <main className="h-30  bg-white/80 backdrop-blur-md border-b border-slate-100 flex items-center justify-between px-4 sm:px-10 shadow-sm shadow-slate-200/50">
+      <main className="h-25 md:h-30  bg-white/80 backdrop-blur-md border-b border-slate-100 flex items-center justify-between px-4 sm:px-10 shadow-sm shadow-slate-200/50">
         {/* Logo Container */}
-        <div className="flex items-center">
+        <div className="flex relative items-center">
           <Image
             alt="logo"
             src={logo}
             width={140}
             height={40}
-            className="w-56 h-auto transition-opacity hover:opacity-90"
+            className="w-45 md:w-56 h-auto transition-opacity hover:opacity-90"
             priority
           />
+          <span className="absolute -top-1 -right-6 text-[10px] font-bold text-primary tracking-wider  px-1.5 py-0.5 rounded-md border border-slate-100 shadow-sm">
+            v1.0.6
+          </span>
         </div>
 
         {/* Action Button */}

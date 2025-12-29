@@ -39,8 +39,10 @@ const getScoreMeta = (questionnaireType: string, score: number) => {
 const ResultPage = () => {
   const [results, setResults] = useState<Result[] | null>(null);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -86,7 +88,7 @@ const ResultPage = () => {
           <div className="absolute inset-0 rounded-full border-4 border-gray-200"></div>
           <div
             className="absolute inset-0 rounded-full border-4 border-t-transparent animate-spin"
-            style={{ borderColor: "var(--primary)", borderTopColor: 'transparent' }}
+            style={{ borderColor: "var(--primary, #0094cf)", borderTopColor: 'transparent' }}
           ></div>
         </div>
         <p className="text-gray-500 font-medium animate-pulse tracking-wide uppercase text-xs">Analyzing all assessments...</p>
@@ -106,7 +108,7 @@ const ResultPage = () => {
           <button
             onClick={() => window.location.href = '/'}
             className="px-8 py-3.5 rounded-2xl font-bold text-white shadow-lg transition-transform hover:scale-105"
-            style={{ background: `linear-gradient(135deg, var(--primary), var(--secondary))` }}
+            style={{ background: `linear-gradient(135deg, var(--primary, #0094cf), var(--secondary, #9c2790))` }}
           >
             Start Assessment
           </button>
@@ -119,7 +121,7 @@ const ResultPage = () => {
     <div className="min-h-screen bg-gray-50/50 pb-20">
       <div
         className="w-full h-80 relative overflow-hidden"
-        style={{ background: `linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)` }}
+        style={{ background: `linear-gradient(135deg, var(--primary, #0094cf) 0%, var(--secondary, #9c2790) 100%)` }}
       >
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -139,125 +141,110 @@ const ResultPage = () => {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 -mt-10 relative z-20">
-        <div className="space-y-8">
+      <div className="max-w-4xl mx-auto px-4 -mt-10 relative z-20">
+        <div className="space-y-6">
           {results.map((r, index) => {
             const { classification, color } = getClassificationAndColor(r.questionnaireType, r.totalScore);
             const meta = getScoreMeta(r.questionnaireType, r.totalScore);
-            
-            // Convert text-color-500 to stroke-color-500 for SVGs to ensure visibility
 
             return (
               <div
                 key={r.id}
-                className="bg-white rounded-[2.5rem] shadow-2xl shadow-blue-900/5 border border-gray-100 p-8 md:p-12 transition-all animate-in slide-in-from-bottom-10 fade-in duration-700 fill-mode-both overflow-hidden"
-                style={{ animationDelay: `${index * 150}ms` }}
+                className="bg-white rounded-4xl shadow-sm border border-gray-100 py-12 px-8 md:p- transition-all hover:shadow-md animate-in fade-in slide-in-from-bottom-4 duration-500"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
-                  <div className="relative shrink-0 w-40 h-40 flex items-center justify-center">
+                <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+                  {/* Left Column: Score Dial */}
+                  <div className="relative w-32 h-32 flex items-center justify-center shrink-0">
                     <svg className="w-full h-full transform -rotate-90">
+                      <circle cx="64" cy="64" r="58" stroke="#f3f4f6" strokeWidth="8" fill="transparent" />
                       <circle
-                        cx="80"
-                        cy="80"
-                        r="70"
-                        stroke="#f1f5f9"
-                        strokeWidth="12"
-                        fill="transparent"
-                      />
-                      <circle
-                        cx="80"
-                        cy="80"
-                        r="70"
+                        cx="64"
+                        cy="64"
+                        r="58"
                         stroke="currentColor"
                         strokeWidth="12"
                         fill="transparent"
-                        strokeDasharray={439.8}
-                        strokeDashoffset={439.8 - (439.8 * (meta?.percentage || 0)) / 100}
+                        strokeDasharray={364.4}
+                        strokeDashoffset={mounted ? 364.4 - (364.4 * (meta?.percentage || 0)) / 100 : 364.4}
                         strokeLinecap="round"
                         className={`transition-all duration-1000 ease-out ${color}`}
-
                       />
                     </svg>
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                      <span className="text-4xl font-black text-gray-800 leading-none tracking-tight">{r.totalScore}</span>
-                      {meta && (
-                        <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mt-2">
-                          Score
-                        </span>
-                      )}
+                    <div className="absolute flex flex-col items-center">
+                      <span className="text-3xl font-bold text-gray-900 leading-none">{r.totalScore}</span>
+                      <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mt-1">Total</span>
                     </div>
                   </div>
 
-                  <div className="grow text-center md:text-left">
-                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-3">
-                      <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">{r.questionnaireType}</h2>
-                      <span className={`px-4 py-1.5 rounded-full bg-white border shadow-sm text-xs font-bold ${color}`}>
+                  {/* Right Column: Information & Spectrum */}
+                  <div className="flex-1 w-full">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                      <h2 className="text-3xl font-extrabold text-gray-900">{r.questionnaireType}</h2>
+                      <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-bold border ${color} bg-white shadow-sm`}>
                         {classification}
                       </span>
                     </div>
 
-                    <p className="text-gray-500 font-medium mb-8 leading-relaxed">
-                      This assessment indicates a <span className={`${color} font-bold`}>{classification.toLowerCase()}</span> status based on your responses.
+                    <p className="text-gray-500 text- font-medium mb-6">
+                      Your score of <span className="font-bold text-gray-800">{r.totalScore}</span> falls within the <span className={`${color} font-bold`}>{classification.toLowerCase()}</span> range.
                     </p>
 
-                    <div className="mt-6 mb-4">
-                      <div className="flex justify-between items-end mb-3 px-1">
-                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Score Spectrum</span>
-                        <span className="text-[11px] font-bold text-gray-600 bg-gray-100 px-2 py-0.5 rounded-md">Scale: 0 - {meta?.maxScore}</span>
+                    {/* Horizontal Spectrum Graph */}
+
+                    <div className="flex justify-between items-center text-sm font-bold text-gray-400 uppercase tracking-widest">
+                      <span>Severity Spectrum</span>
+                      <span className="bg-gray-100 px-2 py-0.5 rounded text-gray-600">Scale: 0 - {meta?.maxScore}</span>
+                    </div>
+
+                    <div className="relative h-6 w-full mt-10 group">
+                      {/* Background Segments */}
+                      <div className="absolute inset-0 flex h-3 my-auto bg-gray-100 rounded-full overflow-hidden">
+                        {meta?.ranges.map((range: any, idx: number) => {
+                          const prevMax = idx === 0 ? 0 : meta.ranges[idx - 1].max;
+                          const rangeWidth = ((range.max - prevMax) / meta.maxScore) * 100;
+                          const getHex = (cls: string) => {
+                            if (cls.includes('green')) return '#22c55e';
+                            if (cls.includes('yellow')) return '#facc15';
+                            if (cls.includes('orange')) return '#f97316';
+                            if (cls.includes('red')) return '#ef4444';
+                            return '#94a3b8';
+                          };
+
+                          return (
+                            <div
+                              key={idx}
+                              className="h-full border-x-2 border-white last:border-0 opacity-40"
+                              style={{ width: `${rangeWidth}%`, backgroundColor: getHex(range.color) }}
+                            />
+                          );
+                        })}
                       </div>
 
-                      <div className="relative h-12 w-full flex items-center">
-                        <div className="absolute inset-0 h-4 my-auto bg-gray-100 rounded-full overflow-hidden flex">
-                          {meta?.ranges.map((range: any, idx: number) => {
-                            const rangeWidth = ((range.max - range.min + 1) / meta.maxScore) * 100;
-                            const getHex = (cls: string) => {
-                              if (cls.includes('green')) return '#10b981';
-                              if (cls.includes('yellow')) return '#ca8a04';
-                              if (cls.includes('orange')) return '#f97316';
-                              if (cls.includes('red')) return '#ef4444';
-                              return '#94a3b8';
-                            };
-                            return (
-                              <div
-                                key={idx}
-                                className="h-full border-r border-white/40 last:border-r-0 opacity-30 transition-all"
-                                style={{
-                                  width: `${rangeWidth}%`,
-                                  backgroundColor: getHex(range.color)
-                                }}
-                              />
-                            );
-                          })}
-                        </div>
-
-                        <div
-                          className="absolute h-full z-10 flex flex-col items-center transition-all duration-1000 ease-out"
-                          style={{ left: `${meta?.percentage}%`, transform: 'translateX(-50%)' }}
-                        >
-                          <div className="w-1 h-[60%] rounded-full  relative" style={{ backgroundColor: "var(--secondary)" }}>
-                            <div className="absolute inset-0 animate-pulse  rounded-full"></div>
-                          </div>
-
-                          <div
-                            className="absolute -top-10 text-white text-[10px] font-bold px-2.5 py-1.5 rounded shadow-xl whitespace-nowrap transition-transform scale-110"
-                            style={{ background: "var(--secondary)" }}
-                          >
-                            You: {r.totalScore}
-                            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-purple-600" style={{ borderTopColor: "var(--secondary)" }}></div>
+                      {/* User Location Marker */}
+                      <div
+                        className="absolute h-full z-10 flex flex-col items-center transition-all duration-700 ease-in-out"
+                        style={{ left: mounted ? `${meta?.percentage}%` : '0%', transform: 'translateX(-50%)' }}
+                      >
+                        <div className="w-1 h-full bg-gray-900 rounded-full shadow-sm relative">
+                          <div className="absolute -top-8  bg-gray-900 text-white text-[12px] font-bold px-2 py-1 rounded whitespace-nowrap">
+                            Score: {r.totalScore}
+                            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
                           </div>
                         </div>
-                      </div>
-
-                      <div className="flex justify-between text-[9px] font-bold text-gray-400 mt-2 px-1">
-                        <span>MIN</span>
-                        <div className="flex gap-4">
-                          {meta?.ranges.map((range: any, idx: number) => (
-                            <span key={idx} className={`${range.color} opacity-80 hidden md:inline`}>{range.classification}</span>
-                          ))}
-                        </div>
-                        <span>MAX ({meta?.maxScore})</span>
                       </div>
                     </div>
+
+                    {/* Labels */}
+                    <div className="flex justify-between w-full items-center px-2 mt-2 text-[13px] font-bold text-gray-400">
+
+                      <div className="hidden sm:flex  justify-between w-full">
+                        {meta?.ranges.map((range: any, idx: number) => (
+                          <span key={idx} className={`${range.color} opacity-70`}>{range.classification}</span>
+                        ))}
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>

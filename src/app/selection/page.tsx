@@ -3,7 +3,7 @@
 
 
 import { useEffect, useState } from "react";
-import { ScaleItem, scales } from "@/app/_utils/scales/scales";
+import { ScaleConfig, ScaleData, SCALES_MAP } from "@/app/_utils/scales/scales";
 import { useRouter } from "next/navigation";
 import Button from "../_components/Button";
 
@@ -62,13 +62,13 @@ export default function LandingPage() {
       {/* Main Content Grid: Card design with theme-specific colors */}
       <div className="max-w-6xl mx-auto px-6 -mt-5 md:-mt-16 relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {scales.map((s: ScaleItem) => {
+          {Object.values(SCALES_MAP).map((s: ScaleConfig) => {
             const isSubmitted = submittedTypes[s.title];
 
             return (
               <div
                 key={s.route}
-                onClick={() => router.push(s.route)}
+                onClick={() => router.push(`/assessment/${s.route}`)}
                 className="group relative bg-white rounded-[2.5rem] p-8 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] border border-slate-100 cursor-pointer transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] hover:-translate-y-2"
               >
                 {/* Submitted Badge */}

@@ -122,4 +122,8 @@
   body {
     @apply bg-background text-foreground;
   }
+  .urdu-text {
+    font-family: var(--font-noto-urdu), serif;
+    line-height: 2.5; /* Nastaliq needs extra vertical space */
+  }
 }

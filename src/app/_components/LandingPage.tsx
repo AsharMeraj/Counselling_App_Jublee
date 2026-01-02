@@ -5,10 +5,10 @@
 import { useEffect, useState } from "react";
 import { ScaleConfig, ScaleData, SCALES_MAP } from "@/app/_utils/scales/scales";
 import { useRouter } from "next/navigation";
-import Button from "../_components/Button";
+import Button from "./Button";
 
 
-export default function LandingPage() {
+export default function LandingPage({currentUser}:{currentUser: string | null}) {
   const router = useRouter();
   const [submittedTypes, setSubmittedTypes] = useState<Record<string, boolean>>({});
 
@@ -51,7 +51,7 @@ export default function LandingPage() {
             Professional Screening Tools
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tighter mb-4 drop-shadow-md">
-            Mental Health Screening
+            Select The Screening Type
           </h1>
           <p className="text-white/80 max-w-xl leading-5 md:text-lg font-medium md:leading-relaxed">
             Select a scale below to begin the assessment. These tools are clinically validated for accurate screening.
@@ -62,23 +62,10 @@ export default function LandingPage() {
       {/* Main Content Grid: Card design with theme-specific colors */}
       <div className="max-w-6xl mx-auto px-6 -mt-5 md:-mt-16 relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {Object.values(SCALES_MAP).map((s: ScaleConfig) => {
-            const isSubmitted = submittedTypes[s.title];
-
-            return (
-              <div
-                key={s.route}
-                onClick={() => router.push(`/assessment/${s.route}`)}
+           <div
+                onClick={() => router.push(`/normalScreening`)}
                 className="group relative bg-white rounded-[2.5rem] p-8 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] border border-slate-100 cursor-pointer transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] hover:-translate-y-2"
               >
-                {/* Submitted Badge */}
-                {isSubmitted && (
-                  <div className="absolute top-6 right-6 flex items-center gap-2 px-6 py-2 bg-green-50 text-green-600 rounded-full border border-green-100">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                    <span className="text-[15px] font-black uppercase tracking-wider">Submitted</span>
-                  </div>
-                )}
-
                 {/* Card Top Section */}
                 <div className="mb-6">
                   <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center mb-6 transition-colors group-hover:bg-primary/10">
@@ -88,29 +75,60 @@ export default function LandingPage() {
                   </div>
                   
                   <h2 className="text-2xl font-bold text-primary tracking-tight mb-3">
-                    {s.title}
+                    Normal Screening
                   </h2>
                   <p className="text-gray-700 text-sm leading-relaxed">
-                    {s.description}
+                    Normal Questionnaire
                   </p>
                 </div>
 
                 {/* Card Action: Using 'secondary' color as specified in the theme */}
                 <div className="mt-auto">
                   <Button variant="pink">
-                    {isSubmitted ? "Submit Again" : "Start Assessment →"}
+                    Proceed →
                   </Button>
                 </div>
 
                 {/* Subtle Hover Accent */}
                 <div className="absolute bottom-0 left-8 right-8 h-1 bg-primary/20 rounded-t-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"></div>
-              </div>
-            );
-          })}
+          </div>
+          {
+            currentUser === "Admin" &&
+         
+          <div
+                onClick={() => router.push(`/researchCenter`)}
+                className="group relative bg-white rounded-[2.5rem] p-8 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.05)] border border-slate-100 cursor-pointer transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] hover:-translate-y-2"
+              >
+                {/* Card Top Section */}
+                <div className="mb-6">
+                  <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center mb-6 transition-colors group-hover:bg-primary/10">
+                    <svg className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  
+                  <h2 className="text-2xl font-bold text-primary tracking-tight mb-3">
+                    Research Center
+                  </h2>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    Research EPDS Questionnaire
+                  </p>
+                </div>
+
+                {/* Card Action: Using 'secondary' color as specified in the theme */}
+                <div className="mt-auto">
+                  <Button variant="pink">
+                    Proceed →
+                  </Button>
+                </div>
+
+                {/* Subtle Hover Accent */}
+                <div className="absolute bottom-0 left-8 right-8 h-1 bg-primary/20 rounded-t-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"></div>
+          </div>
+           }
         </div>
       </div>
     </div>
   );
 }
-
 

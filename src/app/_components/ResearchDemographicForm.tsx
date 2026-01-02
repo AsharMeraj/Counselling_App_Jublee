@@ -25,7 +25,7 @@ type FormState = Record<string, string>;
  * 1. Removed 'isSelected' prop from RadioGroupItem (handled by RadioGroup value).
  * 2. Moved 'placeholder' from SelectTrigger to SelectValue.
  */
-const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | null, onSuccess: () => void}) => {
+const ResearchDemographicForm = ({ currentUser, onSuccess }: { currentUser: string | null, onSuccess: () => void}) => {
   const [form, setForm] = useState<FormState>({});
   const router = useRouter()
   const pathname = usePathname();
@@ -51,7 +51,7 @@ const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | nul
     });
 
     try {
-        const res = await fetch("/api/save-normal-entry", {
+        const res = await fetch("/api/save-research-entry", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
@@ -60,7 +60,7 @@ const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | nul
 
         if (res.ok) {
           localStorage.setItem("entryId", data.entryId); // This matches our Gatekeeper check
-          localStorage.setItem("normalDemographicData", JSON.stringify({ ...payload, entryId: data.entryId }));
+          localStorage.setItem("researchDemographicData", JSON.stringify({ ...payload, entryId: data.entryId }));
           onSuccess()
         }
         
@@ -202,6 +202,6 @@ const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | nul
   );
 };
 
-export default DemographicForm;
+export default ResearchDemographicForm;
 
 

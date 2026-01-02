@@ -1,10 +1,6 @@
-import type { NextConfig } from "next";
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  experimental: {
-    allowedDevOrigins: ['http://192.168.100.32:3000'], // your local network IP + port
-  },
+  /* config options here */
 };
 
 export default nextConfig;

@@ -4,7 +4,7 @@ export type DemographicField = {
   type: "text" | "radio" | "select";
   placeHolder?: string;
   options?: string[];
-  inputType?: string; // "text", "number", "tel", etc.
+  inputType?: string;
 };
 
 export const demographic: DemographicField[] = [

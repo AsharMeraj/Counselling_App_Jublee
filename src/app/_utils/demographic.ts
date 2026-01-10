@@ -9,6 +9,13 @@ export type DemographicField = {
 
 export const demographic: DemographicField[] = [
   {
+    key: "phoneNumber",
+    question: "Phone Number",
+    type: "text",
+    placeHolder: "03XXXXXXXXX",
+    inputType: "tel",
+  },
+  {
     key: "name",
     question: "Name",
     type: "text",
@@ -77,12 +84,5 @@ export const demographic: DemographicField[] = [
       "Shopkeeper",
     ],
     inputType: "text",
-  },
-  {
-    key: "phoneNumber",
-    question: "Phone Number",
-    type: "text",
-    placeHolder: "03XXXXXXXXX",
-    inputType: "tel",
   },
 ];

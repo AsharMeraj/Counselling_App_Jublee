@@ -14,11 +14,13 @@ const Navbar = () => {
       const res = await fetch('/api/auth/sign-out', {
         method: 'POST',
       });
-      localStorage.removeItem("normalDemographicData")
-      localStorage.removeItem("researchDemographicData")
-      console.log("demographicData and researchDemographicData successfully removed")
-
+      
       if (res.ok) {
+        localStorage.removeItem("normalDemographicData")
+        localStorage.removeItem("researchDemographicData")
+        localStorage.removeItem("user_id")
+        localStorage.removeItem("entryId")
+        console.log("demographicData and researchDemographicData successfully removed")
         // Redirect to sign-in page
         window.location.href = '/sign-in';
       } else {

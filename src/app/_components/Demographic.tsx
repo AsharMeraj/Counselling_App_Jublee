@@ -25,7 +25,7 @@ type FormState = Record<string, string>;
  * 1. Removed 'isSelected' prop from RadioGroupItem (handled by RadioGroup value).
  * 2. Moved 'placeholder' from SelectTrigger to SelectValue.
  */
-const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | null, onSuccess: () => void}) => {
+const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | null, onSuccess: () => void }) => {
   const [form, setForm] = useState<FormState>({});
   const router = useRouter()
   const pathname = usePathname();
@@ -43,27 +43,35 @@ const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | nul
     }
 
     // Build payload dynamically based on inputType
-    const payload: Record<string, string | number> = {};
+    const userId = localStorage.getItem("user_id");
+
+    // 1. Initialize the payload with the user_id (or an empty string if not found)
+    const payload: Record<string, string | number> = {
+      user_id: userId || ""
+    };
+
+    // 2. Run your existing loop to fill in the rest of the data
     demographic.forEach((q) => {
       const value = form[q.key];
-      payload[q.key] =
-        q.inputType === "number" && value ? Number(value) : value;
+      payload[q.key] = q.inputType === "number" && value ? Number(value) : value;
     });
 
+    
     try {
-        const res = await fetch("/api/save-normal-entry", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-        const data = await res.json();
+      const res = await fetch("/api/save-normal-entry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
 
-        if (res.ok) {
-          localStorage.setItem("entryId", data.entryId); // This matches our Gatekeeper check
-          localStorage.setItem("normalDemographicData", JSON.stringify({ ...payload, entryId: data.entryId }));
-          onSuccess()
-        }
-        
+      if (res.ok) {
+        localStorage.setItem("user_id", data.user_id);
+        localStorage.setItem("entryId", data.entryId); // This matches our Gatekeeper check
+        localStorage.setItem("normalDemographicData", JSON.stringify({ ...payload, entryId: data.entryId }));
+        onSuccess()
+      }
+
     } catch (error) {
       console.error(error);
       alert("Note: Data captured! (API simulation).");

@@ -10,6 +10,7 @@ export const all_entries = pgTable("all_entries", {
   profession: varchar("profession", {length: 100}).notNull(),
   phoneNumber: varchar("phoneNumber", { length: 20 }).notNull(),
   created_at: timestamp("created_at").defaultNow(),
+  user_id: integer("user_id").notNull().references(() => users.id),
 });
 
 export const results = pgTable("results", {
@@ -18,6 +19,7 @@ export const results = pgTable("results", {
   questionnaireType: varchar("questionnaireType", { length: 50 }).notNull(),
   totalScore: integer("totalScore").notNull(),
   created_at: timestamp("created_at").defaultNow(),
+  user_id: integer("user_id").notNull().references(() => users.id),
 });
 
 
@@ -38,7 +40,8 @@ export const all_research_entries = pgTable("all_research_entries", {
   profession: varchar("profession", {length: 100}).notNull(),
   phoneNumber: varchar("phoneNumber", { length: 20 }).notNull(),
   created_at: timestamp("created_at").defaultNow(),
-  epds_scores: integer("epds_scores")
+  epds_scores: integer("epds_scores"),
+  user_id: integer("user_id").notNull().references(() => users.id),
 });
 
 export const research_result = pgTable("research_result", {
@@ -47,4 +50,5 @@ export const research_result = pgTable("research_result", {
   questionnaireType: varchar("questionnaireType", { length: 50 }).notNull(),
   totalScore: integer("totalScore").notNull(),
   created_at: timestamp("created_at").defaultNow(),
+  user_id: integer("user_id").notNull().references(() => users.id),
 });

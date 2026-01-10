@@ -59,6 +59,8 @@ const ResearchDemographicForm = ({ currentUser, onSuccess }: { currentUser: stri
         const data = await res.json();
 
         if (res.ok) {
+          localStorage.removeItem("entryId")
+          localStorage.removeItem("normalDemographicData")
           localStorage.setItem("entryId", data.entryId); // This matches our Gatekeeper check
           localStorage.setItem("researchDemographicData", JSON.stringify({ ...payload, entryId: data.entryId }));
           onSuccess()

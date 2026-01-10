@@ -5,7 +5,7 @@ import { ScaleConfig, SCALES_MAP } from '@/app/_utils/scales/scales';
 import { useRouter, usePathname } from 'next/navigation'; // Added usePathname
 import React, { use, useEffect, useState } from 'react'
 
-const DynamicAssessmentForm = ({params, currentUser}:{params: Promise<{ scaleType: string }>, currentUser: string | null}) => {
+const DynamicAssessmentForm = ({ params, currentUser }: { params: Promise<{ scaleType: string }>, currentUser: string | null }) => {
     const [answers, setAnswers] = useState<{ [key: number]: number }>({});
     const [isUrdu, setIsUrdu] = useState(false);
     const resolvedParams = use(params);
@@ -52,19 +52,27 @@ const DynamicAssessmentForm = ({params, currentUser}:{params: Promise<{ scaleTyp
              * We check if we're in the research flow (usually via pathname or Admin status)
              * to pull the correct entryId from the correct localStorage key.
              */
-            const isResearch = pathname.includes('assessment/epds') || currentUser === "Admin";
+            const isResearch = pathname.includes('assessment/epds') && currentUser === "Admin";
             const storageKey = isResearch ? "researchDemographicData" : "normalDemographicData";
             const apiEndpoint = isResearch ? "/api/save-research-result" : "/api/save-result";
 
             const demographicStr = localStorage.getItem(storageKey);
-            
+            console.log(localStorage.getItem("user_id"))
+
             if (!demographicStr) {
                 alert("Demographic session expired. Please restart the assessment.");
-                router.push(isResearch ? "/researchCenter" : "/normalScreening");
+                // router.push(isResearch ? "/researchCenter" : "/normalScreening");
                 return;
             }
 
-            const { entryId } = JSON.parse(demographicStr);
+            const { entryId, user_id } = JSON.parse(demographicStr);
+            // Inside handleSubmit in DynamicAssessmentForm.tsx
+
+            if (!user_id) {
+                alert("You must be logged in to save results.");
+                router.push('/sign-in'); // Redirect to login
+                return;
+            }
 
             const res = await fetch(apiEndpoint, {
                 method: "POST",
@@ -73,13 +81,14 @@ const DynamicAssessmentForm = ({params, currentUser}:{params: Promise<{ scaleTyp
                     entryId,
                     questionnaireType: scaleData.title,
                     totalScore,
-                    answers // Good practice to save individual answers too
+                    answers,
+                    user_id, // This is now guaranteed to exist
                 }),
             });
 
             if (res.ok) {
                 // Store the entryId specifically for the result page to fetch the score
-                localStorage.setItem("lastEntryId", entryId.toString());
+                localStorage.setItem("entryId", entryId.toString());
                 router.push("/result");
             } else {
                 const errorData = await res.json();

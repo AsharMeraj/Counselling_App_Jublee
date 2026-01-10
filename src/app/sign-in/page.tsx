@@ -3,10 +3,13 @@ import React, { useState } from 'react';
 import { cn } from '../_utils/cn/cn';
 import Button from '../_components/Button';
 import { useRouter } from 'next/navigation';
+import { db } from '../_utils/db';
+import { users } from '../_utils/db/schema';
 
 export type AuthResponse = {
   message?: string;
   error?: string;
+  user_id?: string | number;
 };
 
 const SignInPage = () => {
@@ -40,6 +43,10 @@ const SignInPage = () => {
         throw new Error(result.error || 'Invalid credentials');
       }
 
+      if (result.user_id) {
+        // localStorage only stores strings, so we convert it just in case it's a number
+        localStorage.setItem("user_id", String(result.user_id));
+      }
       // Successful login logic
       router.push('/')
     } catch (err: any) {
@@ -77,7 +84,7 @@ const SignInPage = () => {
 
       <div className="max-w-xl mx-auto px-4 sm:px-6 -mt-12 relative z-20">
         <div className="bg-white rounded-[2.5rem] shadow-2xl shadow-blue-900/5 border border-slate-100 p-8 sm:p-12 transition-all animate-in fade-in slide-in-from-bottom-8 duration-700">
-          
+
           <form className="space-y-8" onSubmit={handleSubmit}>
             {/* Username Field */}
             <div className="space-y-4">

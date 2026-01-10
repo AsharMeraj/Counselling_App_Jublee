@@ -20,5 +20,5 @@ export async function POST(request: Request) {
         maxAge: 60 * 60 * 24 * 30, // 1 day * 30
     });
 
-    return NextResponse.json({ message: "Logged in" });
+    return NextResponse.json({ message: "Logged in", user_id: user.id });
 }

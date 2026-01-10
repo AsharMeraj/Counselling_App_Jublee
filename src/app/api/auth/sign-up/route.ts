@@ -18,12 +18,14 @@ export async function POST(request: Request) {
     }
 
     // Saving password EXACTLY as typed (Plain Text)
-    await db.insert(users).values({
+    const insertedUser = await db.insert(users).values({
       name: name,
       password: password, 
-    });
+    }).returning({insertedID: users.id})
 
-    return NextResponse.json({ message: "User logged" }, { status: 201 });
+    const GeneratedUserId = insertedUser[0].insertedID
+
+    return NextResponse.json({ message: "User logged", user_id:  GeneratedUserId }, { status: 201 });
 
   } catch (error) {
     return NextResponse.json({ error: "Error" }, { status: 500 });

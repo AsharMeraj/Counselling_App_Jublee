@@ -6,6 +6,7 @@ import Button from '../_components/Button';
 export type AuthResponse = {
   message?: string;
   error?: string;
+  user_id?: string | number
 };
 
 const AuthPage = () => {
@@ -35,8 +36,8 @@ const AuthPage = () => {
 
       const result: AuthResponse = await res.json();
       if (!res.ok) throw new Error(result.error || 'Invalid credentials');
-      
-      window.location.href = '/'; 
+
+      window.location.href = '/';
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -71,6 +72,11 @@ const AuthPage = () => {
       const result: AuthResponse = await res.json();
       if (!res.ok) throw new Error(result.error || 'Something went wrong');
 
+      if (result.user_id) {
+        // localStorage only stores strings, so we convert it just in case it's a number
+        localStorage.setItem("user_id", String(result.user_id));
+      }
+
       setSuccessMessage('Registered successfully! Please sign in.');
       setView('signin');
     } catch (err: any) {
@@ -101,8 +107,8 @@ const AuthPage = () => {
             {view === 'signin' ? 'Welcome Back' : 'Create Account'}
           </h1>
           <p className="text-white/80 mt-3 max-w-xl text-sm sm:text-lg font-medium leading-relaxed">
-            {view === 'signin' 
-              ? 'Please enter your credentials to access your secure assessment dashboard.' 
+            {view === 'signin'
+              ? 'Please enter your credentials to access your secure assessment dashboard.'
               : 'Sign up today to begin your journey and track your mental well-being progress.'}
           </p>
         </div>
@@ -110,7 +116,7 @@ const AuthPage = () => {
 
       <div className="max-w-xl mx-auto px-4 sm:px-6 -mt-12 relative z-20">
         <div className="bg-white rounded-[2.5rem] shadow-2xl shadow-blue-900/5 border border-slate-100 p-8 sm:p-12 transition-all animate-in fade-in slide-in-from-bottom-8 duration-700">
-          
+
           {successMessage && view === 'signin' && (
             <div className="mb-8 p-4 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center gap-3">
               <svg className="w-5 h-5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -209,7 +215,7 @@ const AuthPage = () => {
             {view === 'signin' ? (
               <p className="text-slate-500 font-medium">
                 Don't have an account?{' '}
-                <button 
+                <button
                   onClick={() => { setView('signup'); setError(null); }}
                   className="font-bold text-secondary hover:underline underline-offset-4 decoration-2"
                 >
@@ -219,7 +225,7 @@ const AuthPage = () => {
             ) : (
               <p className="text-slate-500 font-medium">
                 Already have an account?{' '}
-                <button 
+                <button
                   onClick={() => { setView('signin'); setError(null); }}
                   className="font-bold text-secondary hover:underline underline-offset-4 decoration-2"
                 >

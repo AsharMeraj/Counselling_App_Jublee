@@ -84,17 +84,15 @@ const Navbar = () => {
 
       {/* Floating bottom-right navigation button */}
       <button
-        className="fixed bottom-8 right-8 w-16 h-16 bg-white rounded-[1.5rem] flex items-center justify-center cursor-pointer z-50 shadow-[0_20px_50px_-12px_rgba(0,148,207,0.25)] border border-slate-50 transition-all hover:scale-110 hover:shadow-2xl hover:-translate-y-1 active:scale-95 group"
+        className="fixed bottom-8 right-8 w-16 h-16 bg-white rounded-[1.5rem] flex items-center justify-center cursor-pointer z-50 transition-all hover:scale-110 shadow-black/30 shadow-lg group"
         onClick={handleSelectionRedirect}
         aria-label="Go to Selection"
       >
         <div className="relative w-8 h-8 flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0094cf" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:-translate-x-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0094cf" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="">
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
         </div>
-        {/* Subtle hover pulse */}
-        <div className="absolute inset-0 rounded-[1.5rem] bg-primary/5 animate-pulse -z-10 opacity-0 group-hover:opacity-100"></div>
       </button>
     </section>
   );

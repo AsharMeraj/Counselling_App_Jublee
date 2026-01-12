@@ -83,7 +83,7 @@ const ResultPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50">
+      <div className="flex flex-col justify-center items-center bg-gray-50">
         <div className="relative w-20 h-20 mb-4">
           <div className="absolute inset-0 rounded-full border-4 border-gray-200"></div>
           <div
@@ -98,7 +98,7 @@ const ResultPage = () => {
 
   if (!results || results.length === 0) {
     return (
-      <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50 px-6">
+      <div className="min-h-[calc(100vh-6rem)] flex flex-col justify-center items-center bg-gray-50 px-6">
         <div className="bg-white p-12 rounded-[2.5rem] shadow-xl shadow-gray-200 border border-gray-100 text-center max-w-lg">
           <div className="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-6 text-gray-300">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>

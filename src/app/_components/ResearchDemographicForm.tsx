@@ -73,7 +73,7 @@ const ResearchDemographicForm = ({ currentUser, onSuccess }: { currentUser: stri
   };
 
   return (
-    <div className="min-h-screen bg-primary/5 pb-20">
+    <div className="min-h-[calc(100vh-6rem)] bg-primary/5 pb-20">
       {/* Hero Section with requested Gradient Background and Wave Embroidery */}
       <div
         className="w-full h-64 sm:h-80 relative overflow-hidden"

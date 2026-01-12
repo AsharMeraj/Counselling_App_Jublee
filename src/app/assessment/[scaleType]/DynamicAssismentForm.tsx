@@ -104,7 +104,7 @@ const DynamicAssessmentForm = ({ params, currentUser }: { params: Promise<{ scal
     const progress = Math.round((Object.keys(answers).length / currentQuestions.length) * 100);
 
     return (
-        <div className="min-h-screen bg-primary/5 pb-20 overflow-x-hidden">
+        <div className="min-h-[calc(100vh-6rem)] bg-primary/5 pb-20 overflow-x-hidden">
             {/* Hero Section */}
             <div
                 className="w-full h-80 sm:h-96 relative overflow-hidden"

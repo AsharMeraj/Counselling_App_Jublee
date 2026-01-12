@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --primary: rgb(0, 148, 207);
+  --primary: rgb(0, 126, 175);
   --secondary: rgb(156, 39, 144);
   --radius: 0.625rem;
   --background: oklch(1 0 0);

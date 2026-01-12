@@ -57,7 +57,7 @@ const SignInPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-primary/5 pb-20 font-sans">
+    <div className="min-h-[calc(100vh-6rem)] bg-primary/5 pb-20 font-sans">
       {/* Hero Section with Gradient Background and Wave Effect */}
       <div
         className="w-full h-64 sm:h-80 relative overflow-hidden"

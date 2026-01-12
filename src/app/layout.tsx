@@ -40,10 +40,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${notoUrdu.variable} antialiased`}
       >
-        <main className="min-h-screen w-full max-w-[1000px] mx-auto bg-white lg:[zoom:0.8]">
+        <main className="w-full max-w-[1000px] mx-auto bg-white lg:[zoom:0.8]">
           <EPDSProvider>
-            <Navbar />
-            {children}
+            <div className="min-h-screen">
+              <Navbar />
+
+              {children}
+            </div>
           </EPDSProvider>
         </main>
       </body>

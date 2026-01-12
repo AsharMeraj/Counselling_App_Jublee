@@ -33,7 +33,7 @@ export default function LandingPage({currentUser}:{currentUser: string | null}) 
   }, []);
 
   return (
-    <div className="min-h-screen bg-primary/5 pb-24">
+    <div className="min-h-[calc(100vh-6rem)] bg-primary/5 pb-24">
       {/* Hero Section: Maintaining the 'perfect' wave embroidery with requested gradient */}
       <div
         className="w-full h-60 sm:h-96 relative overflow-hidden"

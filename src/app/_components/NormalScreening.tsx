@@ -55,7 +55,7 @@ export default function NormalScreening({ currentUser }: { currentUser: string |
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="flex items-center justify-center bg-white">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
           <p className="font-bold text-primary animate-pulse">Loading your session...</p>
@@ -75,7 +75,7 @@ export default function NormalScreening({ currentUser }: { currentUser: string |
           }}
         />
       ) : (
-        <div className="min-h-screen bg-primary/5 pb-24">
+        <div className="min-h-[calc(100vh-6rem)] bg-primary/5 pb-24">
           {/* Hero Section */}
           <div
             className="w-full h-60 sm:h-96 relative overflow-hidden"

@@ -83,7 +83,7 @@ const ResultPage = () => {
 
   if (loading) {
     return (
-      <div className="flex flex-col justify-center items-center bg-gray-50">
+      <div className="min-h-[calc(100vh-6rem)] flex flex-col justify-center items-center bg-gray-50">
         <div className="relative w-20 h-20 mb-4">
           <div className="absolute inset-0 rounded-full border-4 border-gray-200"></div>
           <div

@@ -21,7 +21,7 @@ const DynamicAssessmentForm = ({ params, currentUser }: { params: Promise<{ scal
 
     if (!scaleData) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-primary/5 p-6">
+            <div className="min-h-[calc(100vh-6rem)] flex items-center justify-center bg-primary/5 p-6">
                 <div className="text-center bg-white p-10 rounded-[2.5rem] shadow-2xl">
                     <h2 className="text-2xl font-black text-red-500 mb-2 tracking-tight">Scale Not Found</h2>
                     <p className="text-slate-500 font-medium">The assessment type "{scaleType}" is invalid.</p>

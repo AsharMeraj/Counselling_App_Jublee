@@ -55,7 +55,7 @@ export default function NormalScreening({ currentUser }: { currentUser: string |
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center bg-white">
+      <div className="min-h-[calc(100vh-6rem)] flex items-center justify-center bg-white">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
           <p className="font-bold text-primary animate-pulse">Loading your session...</p>

@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
 import { usePathname } from 'next/navigation';
 import NormalScreening from "./NormalScreening";
+import { Loader2, Search } from "lucide-react";
 
 type FormState = Record<string, string>;
 /**
@@ -27,11 +28,52 @@ type FormState = Record<string, string>;
  */
 const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | null, onSuccess: () => void }) => {
   const [form, setForm] = useState<FormState>({});
+  const [isFinding, setIsFinding] = useState(false);
+  const [existingEntryId, setExistingEntryId] = useState<string | null>(null);
   const router = useRouter()
   const pathname = usePathname();
 
   const handleChange = (key: string, value: string) => {
     setForm((prev) => ({ ...prev, [key]: value }));
+  };
+
+  // --- NEW: FIND USER LOGIC ---
+  const handleFindUser = async () => {
+    // Assuming 'phone' is the key in your demographic array for phone number
+    const phoneNumber = form["phoneNumber"]; 
+
+    if (!phoneNumber || phoneNumber.length < 5) {
+      alert("Please enter a valid phone number first.");
+      return;
+    }
+
+    setIsFinding(true);
+    try {
+      const res = await fetch(`/api/find-entry-by-phone?phone=${phoneNumber}`);
+      
+      if (!res.ok) {
+        throw new Error("User not found");
+      }
+
+      const data = await res.json();
+
+      if (data) {
+        // 1. Populate the form with existing data
+        setForm(data.fields); 
+        setExistingEntryId(data.entryId);
+        
+        // 2. Set necessary localStorage items
+        localStorage.setItem("entryId", data.entryId);
+        // localStorage.setItem("user_id", data.user_id);
+        
+    
+      }
+    } catch (error) {
+      console.error(error);
+      alert("No existing record found for this phone number.");
+    } finally {
+      setIsFinding(false);
+    }
   };
 
   console.log(currentUser, pathname)
@@ -46,9 +88,10 @@ const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | nul
     const userId = localStorage.getItem("user_id");
 
     // 1. Initialize the payload with the user_id (or an empty string if not found)
-    const payload: Record<string, string | number> = {
-      user_id: userId || ""
-    };
+    const payload: Record<string, any> = {
+    user_id: userId || "",
+    entryId: existingEntryId, // <-- Pass the ID (will be null if it's a new user)
+  };
 
     // 2. Run your existing loop to fill in the rest of the data
     demographic.forEach((q) => {
@@ -114,20 +157,41 @@ const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | nul
                   {q.question}
                 </Label>
 
-                {/* SHADCN INPUT */}
-                {q.type === "text" && (
-                  <Input
-                    type={q.inputType || "text"}
-                    placeholder={q.placeHolder}
-                    value={form[q.key] || ""}
-                    onChange={(e) => handleChange(q.key, e.target.value)}
-                    onKeyDown={(e) => {
-                      if (q.inputType === "number" && !/[0-9]/.test(e.key) && e.key !== "Backspace" && e.key !== "Tab") {
-                        e.preventDefault();
-                      }
-                    }}
-                  />
+                {/* SPECIAL HANDLING FOR PHONE NUMBER FIELD */}
+                {q.question === "Phone Number" ? (
+                  <div className="flex gap-3">
+                    <Input
+                      className="flex-1"
+                      type={q.inputType || "text"}
+                      placeholder={q.placeHolder}
+                      value={form[q.key] || ""}
+                      onChange={(e) => handleChange(q.key, e.target.value)}
+                    />
+                    <button
+                      type="button"
+                      onClick={handleFindUser}
+                      disabled={isFinding}
+                      className="px-6 py-2 bg-secondary text-white rounded-md font-bold hover:opacity-90 transition-all flex items-center gap-2 disabled:bg-slate-300"
+                    >
+                      {isFinding ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
+                      Find
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    {/* Standard Inputs (Text/Radio/Select) logic here... */}
+                    {q.type === "text" && (
+                      <Input
+                        type={q.inputType || "text"}
+                        placeholder={q.placeHolder}
+                        value={form[q.key] || ""}
+                        onChange={(e) => handleChange(q.key, e.target.value)}
+                      />
+                    )}
+                    {/* ... (Keep your existing Radio and Select rendering code here) */}
+                  </>
                 )}
+         
 
                 {/* SHADCN RADIO GROUP */}
                 {q.type === "radio" && q.options && (

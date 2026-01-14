@@ -28,7 +28,6 @@ export async function GET(request: NextRequest) {
     // NOTE: Ensure these keys match the 'key' property in your demographic.ts file
     return NextResponse.json({
       entryId: entry.id,
-      user_id: entry.user_id,
       fields: {
         name: entry.name,
         father_husband: entry.father_husband,

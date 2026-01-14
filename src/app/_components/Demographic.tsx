@@ -109,7 +109,6 @@ const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | nul
       const data = await res.json();
 
       if (res.ok) {
-        localStorage.setItem("user_id", data.user_id);
         localStorage.setItem("entryId", data.entryId); // This matches our Gatekeeper check
         localStorage.setItem("normalDemographicData", JSON.stringify({ ...payload, entryId: data.entryId }));
         onSuccess()

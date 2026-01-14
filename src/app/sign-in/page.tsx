@@ -43,6 +43,8 @@ const SignInPage = () => {
         throw new Error(result.error || 'Invalid credentials');
       }
 
+      console.log("user_id: " + result.user_id)
+
       if (result.user_id) {
         // localStorage only stores strings, so we convert it just in case it's a number
         localStorage.setItem("user_id", String(result.user_id));

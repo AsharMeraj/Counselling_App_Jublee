@@ -4,7 +4,7 @@ import { cn } from '../_utils/cn/cn';
 import Button from './Button';
 import Image from 'next/image';
 import logo from '../../../public/logo.png'
-
+import app from '../../../app.json'
 const Navbar = () => {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
@@ -51,8 +51,8 @@ const Navbar = () => {
             className="w-45 md:w-56 h-auto transition-opacity hover:opacity-90"
             priority
           />
-          <span className="absolute -top-1 -right-6 text-[10px] font-bold text-primary tracking-wider  px-1.5 py-0.5 rounded-md border border-slate-100 shadow-sm">
-            v1.0.6
+          <span className="absolute -top-1 -right-6 text-[12px] font-bold text-primary tracking-wider  px-1.5 py-0.5 rounded-md border border-slate-100 shadow-sm">
+            v{app.version}
           </span>
         </div>
 

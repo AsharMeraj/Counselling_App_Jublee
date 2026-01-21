@@ -46,7 +46,7 @@ export default function LandingPage({currentUser}:{currentUser: string | null}) 
           </svg>
         </div>
         
-        <div className="relative z-10 flex flex-col items-center justify-center h-full px-2 sm:px-6 text-center">
+        <div className="relative z-10 flex flex-col items-center justify-center h-full px-3 sm:px-6 text-center">
           <div className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-[0.3em] mb-6 border border-white/30">
             Professional Screening Tools
           </div>

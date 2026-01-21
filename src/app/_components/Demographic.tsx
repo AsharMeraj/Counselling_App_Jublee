@@ -124,7 +124,7 @@ const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | nul
     <div className="min-h-[calc(100vh-6rem)] bg-primary/5 pb-20">
       {/* Hero Section with requested Gradient Background and Wave Embroidery */}
       <div
-        className="w-full h-64 sm:h-80 relative overflow-hidden"
+        className="w-full h-45 sm:h-64 md:h-80 relative overflow-hidden"
         style={{ background: `linear-gradient(135deg, var(--primary, #0094cf) 0%, var(--secondary, #9c2790) 100%)` }}
       >
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -133,25 +133,25 @@ const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | nul
           </svg>
         </div>
 
-        <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
-          <div className="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-[0.3em] mb-4 border border-white/30">
+        <div className="relative z-10 flex flex-col items-center justify-center h-full px-2 sm:px-6 text-center">
+          <div className="bg-white/20 backdrop-blur-md px-4 py-1 sm:py-1.5 rounded-full text-white text-[8px] sm:text-[10px] font-black uppercase tracking-[0.3em] mb-2 sm:mb-4 border border-white/30">
             Initial Registration
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight drop-shadow-sm">
+          <h1 className="text-[25px] sm:text-4xl md:text-5xl font-black text-white tracking-tight drop-shadow-sm">
             Demographic Information
           </h1>
-          <p className="text-white/80 mt-3 max-w-xl text-sm sm:text-lg font-medium leading-relaxed">
+          <p className="text-white/80 mt-2 sm:mt-3 max-w-xl text-sm sm:text-lg font-medium leading-tight sm:leading-relaxed">
             Please fill out the following details to begin your assessment session.
           </p>
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 -mt-12 relative z-20">
-        <div className="bg-white rounded-[2.5rem] shadow-2xl shadow-blue-900/5 border border-slate-100 p-8 sm:p-12 transition-all">
+      <div className="max-w-3xl mx-auto px-3 sm:px-6 -mt-12 relative z-20">
+        <div className="bg-white rounded-[2.5rem] shadow-2xl shadow-blue-900/5 border border-slate-100 px-6 py-8 sm:p-12 transition-all">
           <div className="space-y-8">
             {demographic.map((q) => (
-              <div key={q.key} className={`space-y-4 ${q.type === "select" || q.question === "Phone Number" ? "mt-10" : ""}`}>
-                <Label className="text-xl font-bold text-[#0094cf] flex items-center gap-2">
+              <div key={q.key} className={`space-y-4 `}>
+                <Label className="text-[15px] sm:text-xl font-bold text-[#0094cf] flex items-center gap-2">
                   <span className="w-1.5 h-6 bg-[#9c2790] rounded-full"></span>
                   {q.question}
                 </Label>

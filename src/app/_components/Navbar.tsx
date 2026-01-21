@@ -61,7 +61,7 @@ const Navbar = () => {
           <Button
             onClick={handleSignOut}
             disabled={isLoggingOut}
-            className="w-auto px-3 py-3 sm:px-6 sm:py-2.5 text-[13px] sm:text-sm rounded-xl"
+            className="w-auto px-4 py-3 sm:px-6 sm:py-2.5 text-[13px] sm:text-sm rounded-xl"
           >
             <span className="flex items-center gap-2">
               {isLoggingOut ? (

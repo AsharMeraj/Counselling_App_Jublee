@@ -155,7 +155,7 @@ const SignInPage = () => {
             </div>
           </form>
 
-          <div className="mt-5 sm:mt-10 pt-4 sm:pt-8 border-t border-slate-100 text-center">
+          <div className="text-sm sm:text-base mt-5 sm:mt-10 pt-4 sm:pt-8 border-t border-slate-100 text-center">
             <p className="text-slate-500 font-medium">
               Don't have an account?{' '}
               <a href="/sign-up" className="font-bold text-secondary hover:underline underline-offset-4 decoration-2">

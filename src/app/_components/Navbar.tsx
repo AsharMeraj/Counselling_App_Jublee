@@ -39,7 +39,7 @@ const Navbar = () => {
 
   return (
     <section className="z-50 w-full">
-      <nav className="h-20 md:h-24 bg-white/70 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between px-2 sm:px-12 shadow-sm shadow-blue-900/5">
+      <nav className="h-24 bg-white/70 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between px-2 sm:px-12 shadow-sm shadow-blue-900/5">
 
         {/* Logo Placeholder - Matches the branding theme */}
         <div className="flex relative items-center">

@@ -84,7 +84,7 @@ const Navbar = () => {
 
       {/* Floating bottom-right navigation button */}
       <button
-        className="fixed bottom-14 right-8 w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-[1.5rem] flex items-center justify-center cursor-pointer z-50 transition-all hover:scale-110 shadow-black/30 shadow-lg group"
+        className="fixed bottom-14 right-8 w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center cursor-pointer z-50 transition-all hover:scale-110 shadow-black/30 shadow-lg group"
         onClick={handleSelectionRedirect}
         aria-label="Go to Selection"
       >

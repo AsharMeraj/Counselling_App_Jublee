@@ -116,7 +116,7 @@ const DynamicAssessmentForm = ({ params, currentUser }: { params: Promise<{ scal
                     </svg>
                 </div>
 
-                <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center pt-8">
+                <div className="relative z-10 flex flex-col items-center justify-center h-full px-3 sm:px-6 text-center pt-8">
                     <div className="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-[0.3em] mb-4 border border-white/30">
                         {isUrdu ? "جائزہ کا عمل" : "Assessment in Progress"}
                     </div>

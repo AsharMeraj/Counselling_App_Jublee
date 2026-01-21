@@ -87,14 +87,14 @@ export default function NormalScreening({ currentUser }: { currentUser: string |
               </svg>
             </div>
 
-            <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
-              <div className="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-[0.3em] mb-6 border border-white/30">
+            <div className="relative z-10 flex flex-col items-center justify-center h-full px-2 sm:px-6 text-center">
+              <div className="bg-white/20 backdrop-blur-md px-4 py-1 sm:py-1.5 rounded-full text-white text-[8px] sm:text-[10px] font-black uppercase tracking-[0.3em] mb-2 sm:mb-4 border border-white/30">
                 Professional Screening Tools
               </div>
-              <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tighter mb-4 drop-shadow-md">
+              <h1 className="text-[28px] sm:text-4xl md:text-5xl font-black text-white tracking-tight drop-shadow-sm">
                 Mental Health Screening
               </h1>
-              <p className="text-white/80 max-w-xl leading-5 md:text-lg font-medium md:leading-relaxed">
+              <p className="text-white/80 mt-2 sm:mt-3 max-w-xl text-sm sm:text-lg font-medium leading-tight sm:leading-relaxed">
                 Select a scale below to begin the assessment. These tools are clinically validated for accurate screening.
               </p>
               

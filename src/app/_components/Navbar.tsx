@@ -88,7 +88,7 @@ const Navbar = () => {
         onClick={handleSelectionRedirect}
         aria-label="Go to Selection"
       >
-        <div className="relative w-5 h-5 sm:w-8 sm:h-8 flex items-center justify-center">
+        <div className="relative w-5 h-5 sm:w-7 sm:h-8 flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0094cf" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="">
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>

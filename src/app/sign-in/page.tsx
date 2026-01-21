@@ -125,7 +125,7 @@ const SignInPage = () => {
               <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute cursor-pointer right-5 top-12 sm:top-16 text-muted-foreground hover:text-foreground focus:outline-none"
+                  className="absolute cursor-pointer right-5 top-1/2 text-muted-foreground hover:text-foreground focus:outline-none"
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (

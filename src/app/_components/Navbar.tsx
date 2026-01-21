@@ -14,7 +14,7 @@ const Navbar = () => {
       const res = await fetch('/api/auth/sign-out', {
         method: 'POST',
       });
-
+      
       if (res.ok) {
         localStorage.removeItem("normalDemographicData")
         localStorage.removeItem("researchDemographicData")
@@ -84,7 +84,7 @@ const Navbar = () => {
 
       {/* Floating bottom-right navigation button */}
       <button
-        className="fixed bottom-14 right-8 px-3 py-3 sm:w-16 sm:h-16 bg-white rounded-bl-full rounded-tl-full flex items-center justify-center cursor-pointer z-50 transition-all hover:scale-110 shadow-black/30 shadow-lg group"
+        className="fixed bottom-14 right-8 w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center cursor-pointer z-50 transition-all hover:scale-110 shadow-black/30 shadow-lg group"
         onClick={handleSelectionRedirect}
         aria-label="Go to Selection"
       >
@@ -93,9 +93,7 @@ const Navbar = () => {
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
         </div>
-        <h2 className='text-secondary ml-2'>
-          Back to start
-        </h2>
+  
       </button>
     </section>
   );

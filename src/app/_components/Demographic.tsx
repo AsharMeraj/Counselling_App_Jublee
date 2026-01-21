@@ -146,7 +146,7 @@ const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | nul
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-3 sm:px-6 -mt-12 relative z-20">
+      <div className="max-w-3xl mx-auto px-3 sm:px-6 -mt-5 sm:-mt-12 relative z-20">
         <div className="bg-white rounded-[2.5rem] shadow-2xl shadow-blue-900/5 border border-slate-100 px-6 py-8 sm:p-12 transition-all">
           <div className="space-y-8">
             {demographic.map((q) => (

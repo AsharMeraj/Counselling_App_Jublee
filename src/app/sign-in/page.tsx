@@ -99,7 +99,7 @@ const SignInPage = () => {
                 type="text"
                 required
                 placeholder="Enter your username"
-                className="w-full px-5 py-3 sm:py-4 rounded-2xl border-2 border-slate-100 bg-slate-50 text-black font-medium transition-all focus:border-primary focus:ring-0 focus:outline-none placeholder:text-slate-400"
+                className="w-full px-5 py-3 sm:py-4 rounded-2xl border-2 border-slate-100 bg-slate-50 text-black font-medium transition-all focus:border-primary focus:ring-0 focus:outline-none sm:placeholder:text-base placeholder:text-sm placeholder:text-slate-400"
               />
             </div>
 
@@ -114,7 +114,7 @@ const SignInPage = () => {
                 type="password"
                 required
                 placeholder="••••••••"
-                className="w-full px-5 py-3 sm:py-4 rounded-2xl border-2 border-slate-100 bg-slate-50 text-black font-medium transition-all focus:border-primary focus:ring-0 focus:outline-none placeholder:text-slate-400"
+                className="w-full px-5 py-3 sm:py-4 rounded-2xl border-2 border-slate-100 bg-slate-50 text-black font-medium transition-all focus:border-primary focus:ring-0 focus:outline-none sm:placeholder:text-base placeholder:text-sm placeholder:text-slate-400"
               />
             </div>
 

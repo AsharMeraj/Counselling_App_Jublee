@@ -62,7 +62,7 @@ const SignInPage = () => {
     <div className="min-h-[calc(100vh-6rem)] bg-primary/5 pb-20 font-sans">
       {/* Hero Section with Gradient Background and Wave Effect */}
       <div
-        className="w-full h-64 sm:h-80 relative overflow-hidden"
+        className="w-full h-45 sm:h-64 md:h-80 relative overflow-hidden"
         style={{ background: `linear-gradient(135deg, #0094cf 0%, #9c2790 100%)` }}
       >
         <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -72,25 +72,25 @@ const SignInPage = () => {
         </div>
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
-          <div className="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-[0.3em] mb-4 border border-white/30">
+          <div className="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-[0.3em] mb-2 sm:mb-4 border border-white/30">
             Secure Access
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight drop-shadow-sm">
             Welcome Back
           </h1>
-          <p className="text-white/80 mt-3 max-w-xl text-sm sm:text-lg font-medium leading-relaxed">
+          <p className="text-white/80 mt-2 sm:mt-3 max-w-xl text-sm sm:text-lg font-medium leading-tight sm:leading-relaxed">
             Please enter your credentials to access your secure assessment dashboard.
           </p>
         </div>
       </div>
 
-      <div className="max-w-xl mx-auto px-4 sm:px-6 -mt-12 relative z-20">
-        <div className="bg-white rounded-[2.5rem] shadow-2xl shadow-blue-900/5 border border-slate-100 p-8 sm:p-12 transition-all animate-in fade-in slide-in-from-bottom-8 duration-700">
+      <div className="max-w-xl mx-auto px-3 sm:px-6 -mt-5 sm:-mt-12 relative z-20">
+        <div className="bg-white rounded-[2.5rem] shadow-2xl shadow-blue-900/5 border border-slate-100 px-6 py-8 sm:p-12 transition-all animate-in fade-in slide-in-from-bottom-8 duration-700">
 
-          <form className="space-y-8" onSubmit={handleSubmit}>
+          <form className="space-y-6 sm:space-y-8" onSubmit={handleSubmit}>
             {/* Username Field */}
-            <div className="space-y-4">
-              <label className="text-xl font-bold text-primary flex items-center gap-2">
+            <div className="space-y-2 sm:space-y-4">
+              <label className="text-[15px] sm:text-xl font-bold text-primary flex items-center gap-2">
                 <span className="w-1.5 h-6 bg-secondary rounded-full"></span>
                 Username
               </label>
@@ -99,13 +99,13 @@ const SignInPage = () => {
                 type="text"
                 required
                 placeholder="Enter your username"
-                className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 bg-slate-50 text-black font-medium transition-all focus:border-primary focus:ring-0 focus:outline-none placeholder:text-slate-400"
+                className="w-full px-5 py-3 sm:py-4 rounded-2xl border-2 border-slate-100 bg-slate-50 text-black font-medium transition-all focus:border-primary focus:ring-0 focus:outline-none placeholder:text-slate-400"
               />
             </div>
 
             {/* Password Field */}
-            <div className="space-y-4">
-              <label className="text-xl font-bold text-primary flex items-center gap-2">
+            <div className="space-y-2 sm:space-y-4">
+              <label className="text-[15px] sm:text-xl font-bold text-primary flex items-center gap-2">
                 <span className="w-1.5 h-6 bg-secondary rounded-full"></span>
                 Password
               </label>
@@ -114,7 +114,7 @@ const SignInPage = () => {
                 type="password"
                 required
                 placeholder="••••••••"
-                className="w-full px-5 py-4 rounded-2xl border-2 border-slate-100 bg-slate-50 text-black font-medium transition-all focus:border-primary focus:ring-0 focus:outline-none placeholder:text-slate-400"
+                className="w-full px-5 py-3 sm:py-4 rounded-2xl border-2 border-slate-100 bg-slate-50 text-black font-medium transition-all focus:border-primary focus:ring-0 focus:outline-none placeholder:text-slate-400"
               />
             </div>
 
@@ -127,7 +127,7 @@ const SignInPage = () => {
               </div>
             )}
 
-            <div className="pt-4">
+            <div className="pt-2 sm:pt-4">
               <Button
                 type="submit"
                 disabled={loading}
@@ -155,7 +155,7 @@ const SignInPage = () => {
             </div>
           </form>
 
-          <div className="mt-10 pt-8 border-t border-slate-100 text-center">
+          <div className="mt-5 sm:mt-10 pt-4 sm:pt-8 border-t border-slate-100 text-center">
             <p className="text-slate-500 font-medium">
               Don't have an account?{' '}
               <a href="/sign-up" className="font-bold text-secondary hover:underline underline-offset-4 decoration-2">

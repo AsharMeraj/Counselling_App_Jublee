@@ -51,7 +51,7 @@ const Navbar = () => {
             className="w-40 md:w-56 h-auto transition-opacity hover:opacity-90"
             priority
           />
-          <span className="absolute -top-1 -right-6 text-[10px] md:text-[12px] font-bold text-primary tracking-wider  md:px-1.5 md:py-0.5 rounded-md border border-slate-100 shadow-sm">
+          <span className="absolute -top-1 -right-6 text-[10px] md:text-[12px] font-bold text-primary tracking-wider px-1 sm:px-1.5 sm:py-0.5 rounded-md border border-slate-100 shadow-sm">
             v{app.version}
           </span>
         </div>
@@ -84,7 +84,7 @@ const Navbar = () => {
 
       {/* Floating bottom-right navigation button */}
       <button
-        className="fixed bottom-8 right-8 w-16 h-16 bg-white rounded-[1.5rem] flex items-center justify-center cursor-pointer z-50 transition-all hover:scale-110 shadow-black/30 shadow-lg group"
+        className="fixed bottom-14 right-8 w-16 h-16 bg-white rounded-[1.5rem] flex items-center justify-center cursor-pointer z-50 transition-all hover:scale-110 shadow-black/30 shadow-lg group"
         onClick={handleSelectionRedirect}
         aria-label="Go to Selection"
       >

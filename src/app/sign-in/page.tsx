@@ -5,6 +5,7 @@ import Button from '../_components/Button';
 import { useRouter } from 'next/navigation';
 import { db } from '../_utils/db';
 import { users } from '../_utils/db/schema';
+import { Eye, EyeOff } from 'lucide-react';
 
 export type AuthResponse = {
   message?: string;
@@ -15,6 +16,7 @@ export type AuthResponse = {
 const SignInPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter()
 
   // Note: Standard React implementation of your handleSubmit logic
@@ -56,6 +58,10 @@ const SignInPage = () => {
     } finally {
       setLoading(false);
     }
+  }
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   }
 
   return (
@@ -104,18 +110,30 @@ const SignInPage = () => {
             </div>
 
             {/* Password Field */}
-            <div className="space-y-2 sm:space-y-4">
+            <div className="space-y-2 sm:space-y-4 relative">
               <label className="text-[15px] sm:text-xl font-bold text-primary flex items-center gap-2">
                 <span className="w-1.5 h-6 bg-secondary rounded-full"></span>
                 Password
               </label>
               <input
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 required
                 placeholder="••••••••"
                 className="w-full px-5 py-3 sm:py-4 rounded-2xl border-2 border-slate-100 bg-slate-50 text-black font-medium transition-all focus:border-primary focus:ring-0 focus:outline-none sm:placeholder:text-base placeholder:text-sm placeholder:text-slate-400"
               />
+              <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute cursor-pointer right-5 top-12 sm:top-15.5 text-muted-foreground hover:text-foreground focus:outline-none"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-5 w-5" />
+                  ) : (
+                    <Eye className="h-5 w-5" />
+                  )}
+                </button>
             </div>
 
             {error && (

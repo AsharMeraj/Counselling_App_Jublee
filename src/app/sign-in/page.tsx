@@ -72,7 +72,7 @@ const SignInPage = () => {
         </div>
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
-          <div className="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-[0.3em] mb-2 sm:mb-4 border border-white/30">
+          <div className="bg-white/20 backdrop-blur-md px-4 py-1 sm:py-1.5 rounded-full text-white text-[8px] sm:text-[10px] font-black uppercase tracking-[0.3em] mb-2 sm:mb-4 border border-white/30">
             Secure Access
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight drop-shadow-sm">

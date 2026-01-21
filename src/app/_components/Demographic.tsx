@@ -137,7 +137,7 @@ const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | nul
           <div className="bg-white/20 backdrop-blur-md px-4 py-1 sm:py-1.5 rounded-full text-white text-[8px] sm:text-[10px] font-black uppercase tracking-[0.3em] mb-2 sm:mb-4 border border-white/30">
             Initial Registration
           </div>
-          <h1 className="text-[25px] sm:text-4xl md:text-5xl font-black text-white tracking-tight drop-shadow-sm">
+          <h1 className="text-[28px] sm:text-4xl md:text-5xl font-black text-white tracking-tight drop-shadow-sm">
             Demographic Information
           </h1>
           <p className="text-white/80 mt-2 sm:mt-3 max-w-xl text-sm sm:text-lg font-medium leading-tight sm:leading-relaxed">

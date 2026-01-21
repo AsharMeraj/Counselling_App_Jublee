@@ -87,7 +87,7 @@ export default function NormalScreening({ currentUser }: { currentUser: string |
               </svg>
             </div>
 
-            <div className="relative z-10 flex flex-col items-center justify-center h-full px-2 sm:px-6 text-center">
+            <div className="relative z-10 flex flex-col items-center justify-center h-full px-3 sm:px-6 text-center">
               <div className="bg-white/20 backdrop-blur-md px-4 py-1 sm:py-1.5 rounded-full text-white text-[8px] sm:text-[10px] font-black uppercase tracking-[0.3em] mb-2 sm:mb-4 border border-white/30">
                 Professional Screening Tools
               </div>

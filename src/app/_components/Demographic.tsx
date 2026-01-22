@@ -170,7 +170,7 @@ const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | nul
                       type="button"
                       onClick={handleFindUser}
                       disabled={isFinding}
-                      className="px-6 py-2 bg-secondary text-white rounded-md font-bold hover:opacity-90 transition-all flex items-center gap-2 disabled:bg-slate-300"
+                      className="px-3 py-1 sm:px-6 sm:py-2 bg-secondary text-white rounded-md font-bold hover:opacity-90 transition-all flex items-center gap-2 disabled:bg-slate-300"
                     >
                       {isFinding ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" />}
                       Find
@@ -207,7 +207,7 @@ const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | nul
                           key={id}
                           onClick={() => handleChange(q.key, opt)}
                           className={cn(
-                            "flex items-center gap-3 px-6 py-4 rounded-2xl border-2 cursor-pointer transition-all duration-300",
+                            "flex items-center gap-1 sm:gap-3 px-3 py-3 sm:px-6 sm:py-4 rounded-xl border-2 cursor-pointer transition-all duration-300",
                             isSelected
                               ? "bg-[rgba(156,39,144,0.05)] border-[#9c2790] text-[#9c2790] shadow-sm shadow-[#9c2790]/10"
                               : "bg-slate-50 border-transparent text-slate-500 hover:border-slate-200 hover:bg-slate-100"
@@ -222,7 +222,7 @@ const DemographicForm = ({ currentUser, onSuccess }: { currentUser: string | nul
                               handleChange(q.key, opt);
                             }}
                           />
-                          <Label htmlFor={id} className="cursor-pointer font-bold text-[16px] leading-none">
+                          <Label htmlFor={id} className="cursor-pointer font-bold text-[14px] sm:text-[16px] leading-none">
                             {opt}
                           </Label>
                         </div>

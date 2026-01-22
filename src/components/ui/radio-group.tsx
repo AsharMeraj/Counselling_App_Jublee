@@ -27,7 +27,7 @@ function RadioGroupItem({
     <RadioGroupPrimitive.Item
       data-slot="radio-group-item"
       className={cn(
-        "border-black/40 bg-transparent aspect-square w-6 h-6 shrink-0 rounded-full border shadow-xs transition-[color,box-shadow] outline-none",
+        "border-black/40 bg-transparent aspect-square w-4 h-4 sm:w-6  sm:h-6 shrink-0 rounded-full border shadow-xs transition-[color,box-shadow] outline-none",
         "aria-invalid:ring-destructive/20 aria-invalid:border-destructive",
         "disabled:cursor-not-allowed disabled:opacity-50",
         className
@@ -39,7 +39,7 @@ function RadioGroupItem({
         className="relative flex items-center justify-center"
       >
         <CircleIcon
-          className="fill-primary absolute top-1/2 left-1/2 w-4.5 h-4.5 -translate-x-1/2 -translate-y-1/2"
+          className="fill-primary absolute top-1/2 left-1/2 w-2.5 h-2.5 sm:w-4.5 sm:h-4.5 -translate-x-1/2 -translate-y-1/2"
           stroke="none" // remove any border/stroke
         />
       </RadioGroupPrimitive.Indicator>

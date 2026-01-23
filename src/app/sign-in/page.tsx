@@ -85,7 +85,7 @@ const SignInPage = () => {
             Welcome Back
           </h1>
           <p className="text-white/80 mt-2 sm:mt-3 max-w-xl text-sm sm:text-lg font-medium leading-tight sm:leading-relaxed">
-            Please enter your credentials to access your secure assessment dashboard.
+            Please enter your credentials to securely access your assessment portal.
           </p>
         </div>
       </div>
@@ -173,7 +173,7 @@ const SignInPage = () => {
             </div>
           </form>
 
-          <div className="text-sm sm:text-base mt-5 sm:mt-10 pt-4 sm:pt-8 border-t border-slate-100 text-center">
+          <div className="text-sm sm:text-base mt-5 sm:mt-10 pt-4 sm:pt-8 border-t border-slate-200 text-center">
             <p className="text-slate-500 font-medium">
               Don't have an account?{' '}
               <a href="/sign-up" className="font-bold text-secondary hover:underline underline-offset-4 decoration-2">

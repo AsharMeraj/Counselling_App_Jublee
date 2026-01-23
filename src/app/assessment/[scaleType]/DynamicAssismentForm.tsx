@@ -107,7 +107,7 @@ const DynamicAssessmentForm = ({ params, currentUser }: { params: Promise<{ scal
         <div className="min-h-[calc(100vh-6rem)] bg-primary/5 pb-20 overflow-x-hidden">
             {/* Hero Section */}
             <div
-                className="w-full h-80 sm:h-96 relative overflow-hidden"
+                className="w-full h-50 sm:h-96 relative overflow-hidden"
                 style={{ background: `linear-gradient(135deg, #0094cf 0%, #9c2790 100%)` }}
             >
                 <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -116,12 +116,12 @@ const DynamicAssessmentForm = ({ params, currentUser }: { params: Promise<{ scal
                     </svg>
                 </div>
 
-                <div className="relative z-10 flex flex-col items-center justify-center h-full px-3 sm:px-6 text-center pt-8">
-                    <div className="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-[10px] font-black uppercase tracking-[0.3em] mb-4 border border-white/30">
+                <div className="relative z-10 flex flex-col items-center justify-center h-full px-3 sm:px-6 text-center pt-4 sm:pt-8">
+                    <div className="bg-white/20 backdrop-blur-md px-4 py-1 sm:py-1.5 rounded-full text-white text-[8px] sm:text-[10px] font-black uppercase tracking-[0.3em] mb-2 sm:mb-4 border border-white/30">
                         {isUrdu ? "جائزہ کا عمل" : "Assessment in Progress"}
                     </div>
                     <h1 className={cn(
-                        "text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight drop-shadow-sm leading-tight max-w-2xl",
+                        "text-[28px] sm:text-4xl md:text-5xl font-black text-white tracking-tight drop-shadow-sm",
                         isUrdu && "urdu-text"
                     )}>
                         {currentTitle}
@@ -130,7 +130,7 @@ const DynamicAssessmentForm = ({ params, currentUser }: { params: Promise<{ scal
                     <button
                         type="button"
                         onClick={() => setIsUrdu((prev) => !prev)}
-                        className="mt-6 px-6 py-2 rounded-full bg-white text-secondary hover:bg-slate-50 transition-all font-bold text-sm shadow-lg flex items-center gap-2"
+                        className="mt-2 sm:mt-6 px-6 py-2 rounded-full bg-white text-secondary hover:bg-slate-50 transition-all font-bold text-sm shadow-lg flex items-center gap-2"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
                         {isUrdu ? "Switch to English" : "اردو میں دیکھیں"}
@@ -138,7 +138,7 @@ const DynamicAssessmentForm = ({ params, currentUser }: { params: Promise<{ scal
                 </div>
             </div>
 
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 -mt-16 relative z-30">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 -mt-7 sm:-mt-16 relative z-30">
                 {/* Sticky Header Progress Bar */}
                 <div className="sticky top-4 z-50 mb-8 transition-all duration-300">
                     <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-xl shadow-blue-900/5 border border-white/50 p-4 px-6">

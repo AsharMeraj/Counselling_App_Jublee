@@ -4,12 +4,19 @@ import { db } from "@/app/_utils/db/index";
 import { users } from "@/app/_utils/db/schema";
 import { eq } from "drizzle-orm";
 
+interface response {
+    name: string,
+    password: string
+
+}
+
 export async function POST(request: Request) {
-    const { name, password } = await request.json();
+    const { name, password }: response = await request.json();
 
-    const [user] = await db.select().from(users).where(eq(users.name, name)).limit(1);
 
-    if (!user || user.password !== password) {
+    const [user] = await db.select().from(users).where(eq(users.name, name.toLowerCase())).limit(1);
+
+    if (!user || user.password !== password.toLowerCase()) {
         return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
     }
 

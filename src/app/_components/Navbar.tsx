@@ -39,7 +39,7 @@ const Navbar = () => {
 
   return (
     <section className="z-50 w-full">
-      <nav className="h-20 md:h-24 bg-white/70 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between px-6 sm:px-12 shadow-sm shadow-blue-900/5">
+      <nav className="h-20 sm:h-24 bg-white/70 backdrop-blur-xl border-b border-slate-100 flex items-center justify-between px-2 sm:px-12 shadow-sm shadow-blue-900/5">
 
         {/* Logo Placeholder - Matches the branding theme */}
         <div className="flex relative items-center">
@@ -48,10 +48,10 @@ const Navbar = () => {
             src={logo}
             width={140}
             height={40}
-            className="w-45 md:w-56 h-auto transition-opacity hover:opacity-90"
+            className="w-40 md:w-56 h-auto transition-opacity hover:opacity-90"
             priority
           />
-          <span className="absolute -top-1 -right-6 text-[12px] font-bold text-primary tracking-wider  px-1.5 py-0.5 rounded-md border border-slate-100 shadow-sm">
+          <span className="absolute -top-1 -right-6 text-[10px] md:text-[12px] font-bold text-primary tracking-wider px-1 sm:px-1.5 sm:py-0.5 rounded-md border border-slate-100 shadow-sm">
             v{app.version}
           </span>
         </div>
@@ -61,7 +61,7 @@ const Navbar = () => {
           <Button
             onClick={handleSignOut}
             disabled={isLoggingOut}
-            className="w-auto px-6 py-2.5 text-sm rounded-xl"
+            className="w-auto px-4 py-3 sm:px-6 sm:py-2.5 text-[13px] sm:text-sm rounded-xl"
           >
             <span className="flex items-center gap-2">
               {isLoggingOut ? (
@@ -84,15 +84,16 @@ const Navbar = () => {
 
       {/* Floating bottom-right navigation button */}
       <button
-        className="fixed bottom-8 right-8 w-16 h-16 bg-white rounded-[1.5rem] flex items-center justify-center cursor-pointer z-50 transition-all hover:scale-110 shadow-black/30 shadow-lg group"
+        className="fixed bottom-20 right-6 sm:right-6 w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center cursor-pointer z-50 transition-all hover:scale-110 shadow-black/30 shadow-lg group"
         onClick={handleSelectionRedirect}
         aria-label="Go to Selection"
       >
-        <div className="relative w-8 h-8 flex items-center justify-center">
+        <div className="relative w-5 h-5 sm:w-7 sm:h-7 flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0094cf" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="">
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
         </div>
+  
       </button>
     </section>
   );

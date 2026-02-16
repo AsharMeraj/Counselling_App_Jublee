@@ -14,6 +14,8 @@ const DynamicAssessmentForm = ({ params, currentUser }: { params: Promise<{ scal
     const pathname = usePathname(); // Helpful to determine if we are in /assessment/ (research) or /normalScreening/
 
     const scaleData: ScaleConfig = SCALES_MAP[scaleType];
+    console.log(answers)
+    console.log(scaleType)
 
     useEffect(() => {
         setAnswers({});
@@ -38,39 +40,44 @@ const DynamicAssessmentForm = ({ params, currentUser }: { params: Promise<{ scal
     };
 
     const handleSubmit = async () => {
-        // 1. Check if all questions are answered
+        // 1. Validation: Ensure all questions are answered
         if (Object.keys(answers).length < currentQuestions.length) {
             alert(isUrdu ? "براہ کرم تمام سوالات کے جوابات دیں۔" : "Please answer all questions before submitting.");
             return;
         }
 
+        // 2. Map indices to actual Question Text and Option Labels for the DB
+        const detailedResults = currentQuestions.map((q, index) => {
+            const selectedValue = answers[index];
+            const selectedOption = q.options.find(opt => opt.value === selectedValue);
+
+            return {
+                questionNumber: index + 1,
+                questionText: q.question,
+                selectedLabel: selectedOption ? selectedOption.Label : "N/A",
+                score: selectedValue
+            };
+        });
+
         const totalScore = Object.values(answers).reduce((sum, v) => sum + v, 0);
 
         try {
-            /**
-             * Determine Context: 
-             * We check if we're in the research flow (usually via pathname or Admin status)
-             * to pull the correct entryId from the correct localStorage key.
-             */
             const isResearch = pathname.includes('assessment/epds') && currentUser === "Admin";
             const storageKey = isResearch ? "researchDemographicData" : "normalDemographicData";
             const apiEndpoint = isResearch ? "/api/save-research-result" : "/api/save-result";
 
             const demographicStr = localStorage.getItem(storageKey);
-            console.log(localStorage.getItem("user_id"))
 
             if (!demographicStr) {
                 alert("Demographic session expired. Please restart the assessment.");
-                // router.push(isResearch ? "/researchCenter" : "/normalScreening");
                 return;
             }
 
             const { entryId, user_id } = JSON.parse(demographicStr);
-            // Inside handleSubmit in DynamicAssessmentForm.tsx
 
             if (!user_id) {
                 alert("You must be logged in to save results.");
-                router.push('/sign-in'); // Redirect to login
+                router.push('/sign-in');
                 return;
             }
 
@@ -81,13 +88,12 @@ const DynamicAssessmentForm = ({ params, currentUser }: { params: Promise<{ scal
                     entryId,
                     questionnaireType: scaleData.title,
                     totalScore,
-                    answers,
-                    user_id, // This is now guaranteed to exist
+                    detailedResults, // NEW: Sending the full data array
+                    user_id,
                 }),
             });
 
             if (res.ok) {
-                // Store the entryId specifically for the result page to fetch the score
                 localStorage.setItem("entryId", entryId.toString());
                 router.push("/result");
             } else {

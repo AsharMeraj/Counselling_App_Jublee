@@ -6,7 +6,7 @@ import { eq, sql } from "drizzle-orm";
 
 interface response {
     name: string,
-    password: string,
+    password: string
 
 }
 

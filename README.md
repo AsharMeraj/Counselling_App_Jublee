@@ -10,104 +10,64 @@ It also supports research-based assessments for academic and clinical data colle
 
 ---
 
-## 🌟 What This App Does
-
-EZCounselling helps users:
-
-- Check their daily emotional and mental wellbeing  
-- Complete guided psychological assessments  
-- Receive instant results and interpretations  
-- Participate in structured research studies (when applicable)  
-- Track mental health insights over time  
-
-The platform is designed to make mental health evaluation simple, accessible, and structured.
+## 🔄 How It Works
 
 ---
 
-## 🔄 How It Works (User Flow)
-
----
-
-### 1. Sign In / Sign Up
-
-<p align="center">
-  <img src="public/assets/SignIn.png" width="500"/>
-</p>
-
-Users start by creating an account or logging in to access the system.
-
----
-
-### 2. Choose Mode
+### 🧭 Choose Mode
 
 <p align="center">
   <img src="public/assets/Registration.png" width="500"/>
 </p>
 
-Users select one of two paths:
+Users start by selecting the type of assessment they want to take.
 
-- **Daily Check-in** → General mental wellbeing tracking  
-- **Research Center** *(restricted access)* → Specialized psychological studies  
+- **Daily Check-in** → Personal mental wellbeing tracking  
+- **Research Center** *(restricted access)* → Structured psychological studies  
+
+This step defines the entire assessment flow.
 
 ---
 
-### 3. Assessment Flow
+### 📝 Assessment Flow
 
 <p align="center">
   <img src="public/assets/Questions.png" width="500"/>
 </p>
 
-Users answer structured questions step by step.
+Users answer a structured set of psychological questions step by step.
 
-- Questions adapt based on assessment type  
-- Designed to evaluate emotional patterns  
-- Simple and guided experience  
+- Questions adapt based on selected assessment  
+- Designed to evaluate emotional and behavioral patterns  
+- Simple, guided, and user-friendly experience  
 
 ---
 
-### 4. Scoring System
+### 📊 Scoring System
 
 <p align="center">
   <img src="public/assets/Scales.png" width="500"/>
 </p>
 
-After completion:
+After completion, responses are automatically processed.
 
-- Responses are analyzed automatically  
-- A score is calculated using validated scales  
-- Results are linked to the user entry  
+- Answers are analyzed using validated psychological scales  
+- A final score is generated  
+- Results are linked to the user’s submission  
 
 ---
 
-### 5. Results Page
+### 📈 Results Page
 
 <p align="center">
   <img src="public/assets/Result.png" width="500"/>
 </p>
 
-Users receive:
+Users receive a clear breakdown of their assessment.
 
 - Overall mental wellbeing score  
-- Breakdown of responses  
-- Simple interpretation of results  
-
----
-
-## 📊 What the Platform Provides
-
-### For Individuals
-- Daily emotional self-checks  
-- Awareness of mental wellbeing patterns  
-- Clear feedback after each assessment  
-- Simple guided experience  
-
----
-
-### For Research / Clinical Use
-- Structured data collection system  
-- Separate handling of research responses  
-- Consistent questionnaire format  
-- Organized results for analysis  
+- Interpretation of results  
+- Insight into response patterns  
 
 ---
 
@@ -124,8 +84,8 @@ It allows both individuals and researchers to work with mental health data in a 
 
 ## 🎯 Key Benefits
 
-- Easy to use for non-technical users  
-- Clear guided assessment flow  
+- Easy and intuitive for non-technical users  
+- Step-by-step guided assessment flow  
 - Instant results after completion  
 - Supports both personal and research use cases  
 - Clean and structured data handling  

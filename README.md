@@ -14,18 +14,17 @@ It also supports research-based assessments for academic and clinical data colle
 
 ---
 
-### 🧭 Choose Mode
+### 📊 Dashboard (Scale Overview)
 
 <p align="center">
-  <img src="public/assets/Registration.png" width="500"/>
+  <img src="public/assets/Scales.png" width="500"/>
 </p>
 
-Users start by selecting the type of assessment they want to take.
+After entering the system, users land on a dashboard that represents available assessments and their structure.
 
-- **Daily Check-in** → Personal mental wellbeing tracking  
-- **Research Center** *(restricted access)* → Structured psychological studies  
-
-This step defines the entire assessment flow.
+- Shows available mental health scales  
+- Helps users understand what they are about to take  
+- Acts as the starting point of the assessment journey  
 
 ---
 
@@ -35,25 +34,11 @@ This step defines the entire assessment flow.
   <img src="public/assets/Questions.png" width="500"/>
 </p>
 
-Users answer a structured set of psychological questions step by step.
+Users proceed through a structured set of psychological questions.
 
-- Questions adapt based on selected assessment  
+- Questions adapt based on selected scale  
 - Designed to evaluate emotional and behavioral patterns  
-- Simple, guided, and user-friendly experience  
-
----
-
-### 📊 Scoring System
-
-<p align="center">
-  <img src="public/assets/Scales.png" width="500"/>
-</p>
-
-After completion, responses are automatically processed.
-
-- Answers are analyzed using validated psychological scales  
-- A final score is generated  
-- Results are linked to the user’s submission  
+- Simple, step-by-step guided experience  
 
 ---
 
@@ -63,11 +48,11 @@ After completion, responses are automatically processed.
   <img src="public/assets/Result.png" width="500"/>
 </p>
 
-Users receive a clear breakdown of their assessment.
+After completion, users receive a clear breakdown of their results.
 
 - Overall mental wellbeing score  
-- Interpretation of results  
-- Insight into response patterns  
+- Interpretation of responses  
+- Insight into emotional patterns  
 
 ---
 

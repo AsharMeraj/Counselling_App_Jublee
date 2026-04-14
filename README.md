@@ -1,7 +1,7 @@
 # 🧠 EZCounselling
 
 <p align="center">
-  <img src="public/assets/Registration.png" width="800"/>
+  <img src="public/assets/Registration.png" width="500"/>
 </p>
 
 EZCounselling is a mental health screening and assessment platform designed to help users understand their emotional wellbeing through structured questionnaires and guided evaluations.
@@ -31,7 +31,7 @@ The platform is designed to make mental health evaluation simple, accessible, an
 ### 1. Sign In / Sign Up
 
 <p align="center">
-  <img src="public/assets/SignIn.png" width="800"/>
+  <img src="public/assets/SignIn.png" width="500"/>
 </p>
 
 Users start by creating an account or logging in to access the system.
@@ -41,7 +41,7 @@ Users start by creating an account or logging in to access the system.
 ### 2. Choose Mode
 
 <p align="center">
-  <img src="public/assets/Registration.png" width="800"/>
+  <img src="public/assets/Registration.png" width="500"/>
 </p>
 
 Users select one of two paths:
@@ -54,7 +54,7 @@ Users select one of two paths:
 ### 3. Assessment Flow
 
 <p align="center">
-  <img src="public/assets/Questions.png" width="800"/>
+  <img src="public/assets/Questions.png" width="500"/>
 </p>
 
 Users answer structured questions step by step.
@@ -68,7 +68,7 @@ Users answer structured questions step by step.
 ### 4. Scoring System
 
 <p align="center">
-  <img src="public/assets/Scales.png" width="800"/>
+  <img src="public/assets/Scales.png" width="500"/>
 </p>
 
 After completion:
@@ -82,7 +82,7 @@ After completion:
 ### 5. Results Page
 
 <p align="center">
-  <img src="public/assets/Result.png" width="800"/>
+  <img src="public/assets/Result.png" width="500"/>
 </p>
 
 Users receive:
